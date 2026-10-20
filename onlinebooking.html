@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Reservation Requests - HotelEase Admin</title>
+  <link rel="stylesheet" href="onlinebooking.css">
+</head>
+<body>
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="brand-header">
+      <a href="dashboard.html" class="brand-name">HOTELEASE</a>
+      <span class="admin-badge">ADMIN</span>
+    </div>
+    <a href="login.html" class="logout-btn">LOG OUT</a>
+  </header>
+
+  <!-- Table Container -->
+  <main class="dashboard-container">
+    <a href="dashboard.html" class="back-link">&larr; Back to Admin Dashboard</a>
+
+    <div class="subpage-card">
+      <h2 class="heading-font" style="color: var(--dark-azure-deep); margin-bottom: 0.5rem;">Pending Online Reservation Requests</h2>
+      <p style="color: var(--grey-blue); font-size: 14px;">Confirm guest bookings to authorize room allocations.</p>
+
+      <table class="request-table">
+        <thead>
+          <tr>
+            <th>Booking Reference</th>
+            <th>Guest Name</th>
+            <th>Requested Room</th>
+            <th>Stay Dates</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="requests-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Online Booking Script -->
+  <script>
+    function getRequests() {
+      const data = localStorage.getItem('hotelease_requests');
+      return data ? JSON.parse(data) : [];
+    }
+
+    function saveRequests(requests) {
+      localStorage.setItem('hotelease_requests', JSON.stringify(requests));
+    }
+
+    function renderRequestsTable() {
+      const tableBody = document.getElementById('requests-body');
+      const requests = getRequests();
+
+      if (requests.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 2rem; color: var(--grey-blue);">No pending reservation requests in queue.</td></tr>`;
+        return;
+      }
+
+      tableBody.innerHTML = requests.map((item, index) => `
+        <tr>
+          <td><strong>${item.id}</strong></td>
+          <td>${item.guest}</td>
+          <td>${item.room}</td>
+          <td>${item.dates}</td>
+          <td>
+            <button class="sm-btn btn-confirm" onclick="confirmRequest(${index})">Confirm</button>
+            <button class="sm-btn btn-reject" onclick="declineRequest(${index})">Decline</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function confirmRequest(index) {
+      const requests = getRequests();
+      const approved = requests.splice(index, 1)[0];
+      saveRequests(requests);
+      renderRequestsTable();
+      alert(`Booking ${approved.id} for ${approved.guest} has been confirmed!`);
+    }
+
+    function declineRequest(index) {
+      const requests = getRequests();
+      const declined = requests.splice(index, 1)[0];
+      saveRequests(requests);
+      renderRequestsTable();
+      alert(`Booking ${declined.id} has been declined.`);
+    }
+
+    document.addEventListener('DOMContentLoaded', renderRequestsTable);
+  </script>
+</body>
+</html>

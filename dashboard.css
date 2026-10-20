@@ -1,0 +1,41 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, #102a43 0%, #0f766e 55%, #183b56 100%);
+    min-height: 100vh;
+}
+
+.font-fraunces {
+    font-family: 'Fraunces', serif;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #368981;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0f766e;
+}
+
+/* Highly Noticeable Glowing Pulse Animation for Notification Circle */
+@keyframes subtle-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7), 0 10px 25px -5px rgba(225, 29, 72, 0.6);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 12px rgba(244, 63, 94, 0), 0 15px 30px -5px rgba(225, 29, 72, 0.8);
+    }
+}
+
+.vivid-notif-badge {
+    animation: subtle-pulse 2s infinite ease-in-out;
+}

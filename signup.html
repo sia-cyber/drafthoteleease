@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HotelEase Portal</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="brand-header">
+            <div class="brand-logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path>
+                </svg>
+            </div>
+            <div>
+                <div class="brand-tag">HotelEase Hospitality Subsystem</div>
+                <h1 class="brand-name">Create account</h1>
+            </div>
+        </div>
+
+        <p class="auth-subtitle">Register a new profile to explore the HotelEase Tourist Portal ecosystem.</p>
+
+        <div id="alertBox" class="alert-box"></div>
+
+        <form id="signupForm" onsubmit="handleSignup(event)">
+            <div class="input-group">
+                <label for="fullname">Full name</label>
+                <input type="text" id="fullname" placeholder="Alex Morgan" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="alexmorgan@gmail.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Create a secure password" required oninput="checkPasswordStrength(this.value)">
+                    <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Show</button>
+                </div>
+                <div class="strength-meter" id="strengthMeter"><div class="strength-bar" id="strengthBar"></div></div>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm_password">Confirm password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirm_password" placeholder="Confirm your password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('confirm_password', this)">Show</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary signup-btn">Create Account</button>
+        </form>
+
+        <div class="switch-auth">
+            Already have an account? <a href="login.html">Log in</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                btn.textContent = 'Show';
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            const meter = document.getElementById('strengthMeter');
+            const bar = document.getElementById('strengthBar');
+            
+            if (password.length === 0) {
+                meter.style.display = 'none';
+                return;
+            }
+            meter.style.display = 'block';
+
+            let strength = 0;
+            if (password.length >= 8) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
+            if (strength <= 1) {
+                bar.style.width = '33%';
+                bar.style.backgroundColor = '#e53e3e';
+            } else if (strength === 2 || strength === 3) {
+                bar.style.width = '66%';
+                bar.style.backgroundColor = '#dd6b20';
+            } else {
+                bar.style.width = '100%';
+                bar.style.backgroundColor = '#368981';
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = 'alert-box ' + (type === 'success' ? 'alert-success' : 'alert-error');
+            alertBox.style.display = 'block';
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (password !== confirmPassword) {
+                showAlert('Passwords do not match. Please check again.', 'error');
+                return;
+            }
+
+            showAlert('Account created for ' + fullname + '! Redirecting to login...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

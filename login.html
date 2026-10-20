@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HotelEase Portal</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="portal-container">
+        <div class="brand-header">
+            <div class="brand-logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path>
+                </svg>
+            </div>
+            <div>
+                <div class="brand-tag">HotelEase Hospitality Subsystem</div>
+                <h1 class="brand-name">Welcome back</h1>
+            </div>
+        </div>
+
+        <p class="auth-subtitle">Sign in to access your hotel management dashboard and guest portal.</p>
+
+        <div id="alertBox" class="alert-box"></div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="staff@gmail.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Show</button>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember"> Remember me
+                </label>
+                <a href="#" class="forgot-link" onclick="handleForgot()">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">Log In</button>
+        </form>
+
+        <div class="switch-auth">
+            Don't have an account? <a href="signup.html">Create an account</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                btn.textContent = 'Show';
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = 'alert-box ' + (type === 'success' ? 'alert-success' : 'alert-error');
+            alertBox.style.display = 'block';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                showAlert('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Show success message
+            showAlert('Login successful! Redirecting to dashboard...', 'success');
+
+            // Redirect to dashboard.html after 1 second
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1000);
+        }
+
+        function handleForgot() {
+            const email = prompt('Please enter your email to reset your password:');
+            if (email) {
+                showAlert('Password reset link sent to ' + email, 'success');
+            }
+        }
+    </script>
+
+</body>
+</html>
