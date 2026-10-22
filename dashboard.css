@@ -524,6 +524,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px 0;
+    flex-shrink: 0;
 }
 
 .circular-chart {
@@ -546,10 +547,99 @@ body {
 
 .doughnut-center-text {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.doughnut-center-text .total-percent {
     font-family: var(--font-serif);
     font-size: 26px;
     font-weight: 700;
     color: var(--primary-dark);
+}
+
+.doughnut-center-text .total-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Multi-segment Donut & Room Breakdown Legend */
+.occupancy-breakdown-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+@media (max-width: 500px) {
+    .occupancy-breakdown-wrapper {
+        flex-direction: column;
+    }
+}
+
+.circle-segment {
+    fill: none;
+    stroke-width: 3.8;
+    transition: all 0.3s ease;
+}
+
+.circle-segment:hover {
+    stroke-width: 4.8;
+}
+
+.segment-standard      { stroke: #38bdf8; background-color: #38bdf8; }
+.segment-economy       { stroke: #20b2aa; background-color: #20b2aa; }
+.segment-deluxe        { stroke: #ff5e7e; background-color: #ff5e7e; }
+.segment-executive     { stroke: #a78bfa; background-color: #a78bfa; }
+.segment-family        { stroke: #f59e0b; background-color: #f59e0b; }
+.segment-presidential  { stroke: #d4af37; background-color: #d4af37; }
+
+.room-breakdown-legend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.legend-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-info .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.room-name {
+    color: #334155;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.room-pct {
+    font-weight: 700;
+    color: #0c232c;
+    font-size: 12px;
 }
 
 /* SVG Line graph chart formatting */
@@ -639,17 +729,23 @@ body {
     gap: 16px;
 }
 
+/* Modal logo badge container */
 .modal-icon-badge {
     width: 44px;
     height: 44px;
-    background: rgba(32, 178, 170, 0.12);
-    color: #20b2aa;
-    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     margin-top: 2px;
+}
+
+/* Logo vector sizing inside modal header */
+.modal-logo-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.25));
 }
 
 .modal-title-row {
