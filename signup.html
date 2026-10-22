@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Document Metadata & Viewport Configurations -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - HotelEase Portal</title>
+    
+    <!-- External Stylesheet Links -->
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
 
+    <!-- Main Registration Portal Card Wrapper -->
     <div class="portal-container">
+        
+        <!-- Brand Identity Header Section -->
         <div class="brand-header">
             <div class="brand-logo">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -23,8 +29,10 @@
 
         <p class="auth-subtitle">Register a new profile to explore the HotelEase Tourist Portal ecosystem.</p>
 
+        <!-- Dynamic Success & Error Alert Banner -->
         <div id="alertBox" class="alert-box"></div>
 
+        <!-- User Registration Form -->
         <form id="signupForm" onsubmit="handleSignup(event)">
             <div class="input-group">
                 <label for="fullname">Full name</label>
@@ -42,6 +50,7 @@
                     <input type="password" id="password" placeholder="Create a secure password" required oninput="checkPasswordStrength(this.value)">
                     <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Show</button>
                 </div>
+                <!-- Visual Password Strength Bar Meter -->
                 <div class="strength-meter" id="strengthMeter"><div class="strength-bar" id="strengthBar"></div></div>
             </div>
 
@@ -56,12 +65,18 @@
             <button type="submit" class="btn-primary signup-btn">Create Account</button>
         </form>
 
+        <!-- Switch to Login View Navigation Footer -->
         <div class="switch-auth">
             Already have an account? <a href="login.html">Log in</a>
         </div>
     </div>
 
+    <!-- Client-Side Form Logic & Interactivity -->
     <script>
+        /**
+         * Toggles input field visibility between masked password and plain text.
+         * Updates button text indicator between 'Show' and 'Hide'.
+         */
         function togglePassword(inputId, btn) {
             const input = document.getElementById(inputId);
             if (input.type === 'password') {
@@ -73,6 +88,10 @@
             }
         }
 
+        /**
+         * Evaluates password complexity criteria (length, uppercase, digits, symbols).
+         * Updates the visual strength meter width and bar color accordingly.
+         */
         function checkPasswordStrength(password) {
             const meter = document.getElementById('strengthMeter');
             const bar = document.getElementById('strengthBar');
@@ -101,6 +120,10 @@
             }
         }
 
+        /**
+         * Renders dynamic user feedback message banners above the registration form.
+         * Sets background styling based on alert type ('success' or 'error').
+         */
         function showAlert(message, type) {
             const alertBox = document.getElementById('alertBox');
             alertBox.textContent = message;
@@ -108,6 +131,10 @@
             alertBox.style.display = 'block';
         }
 
+        /**
+         * Handles the sign-up form submit event.
+         * Validates password match, displays feedback, and redirects to login view.
+         */
         function handleSignup(event) {
             event.preventDefault();
 
