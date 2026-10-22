@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Walk-In Guest Registration - HotelEase Admin</title>
+  <!-- Link to the external CSS file for page design and layout -->
   <link rel="stylesheet" href="walkinguest.css">
 </head>
 <body>
 
-  <!-- Admin Header -->
+  <!-- Admin Header Navigation Bar -->
   <header class="admin-header">
     <div class="brand-header">
       <a href="dashboard.html" class="brand-name">HOTELEASE</a>
@@ -17,20 +18,24 @@
     <a href="login.html" class="logout-btn">LOG OUT</a>
   </header>
 
-  <!-- Walk-in Form Container -->
+  <!-- Main Content Container for Walk-in Booking -->
   <main class="dashboard-container">
+    <!-- Navigation link to return back to the main admin dashboard -->
     <a href="dashboard.html" class="back-link">&larr; Back to Admin Dashboard</a>
 
     <div class="subpage-card" style="max-width: 600px; margin: 1rem auto;">
       <h2 class="heading-font" style="color: var(--dark-azure-deep); margin-bottom: 0.5rem;">Walk-In Express Check-In</h2>
       <p style="color: var(--grey-blue); font-size: 14px; margin-bottom: 1.5rem;">Register a walk-in guest into the PMS and allocate room access.</p>
 
+      <!-- Walk-in guest registration form -->
       <form id="walkin-form">
+        <!-- Input field for guest's full name -->
         <div class="input-group">
           <label for="walkin-name">Full Guest Name</label>
           <input type="text" id="walkin-name" placeholder="e.g. John Doe" required>
         </div>
 
+        <!-- Dropdown selection for room categories and pricing -->
         <div class="input-group">
           <label for="walkin-room">Room Category</label>
           <select id="walkin-room" required>
@@ -40,31 +45,19 @@
           </select>
         </div>
 
+        <!-- Number input for length of stay -->
         <div class="input-group">
           <label for="walkin-nights">Duration (Nights)</label>
           <input type="number" id="walkin-nights" value="1" min="1" required>
         </div>
 
+        <!-- Form submission button -->
         <button type="submit" class="btn-primary" style="margin-top: 1rem;">Confirm & Allocate Room Key</button>
       </form>
     </div>
   </main>
 
-  <!-- Walk-In Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('walkin-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const guestName = document.getElementById('walkin-name').value;
-        const roomType = document.getElementById('walkin-room').value;
-        const nights = document.getElementById('walkin-nights').value;
-
-        alert(`Walk-In Confirmed!\n\nGuest: ${guestName}\nRoom: ${roomType}\nNights: ${nights}`);
-        window.location.href = 'dashboard.html';
-      });
-    });
-  </script>
+  <!-- Linked external JavaScript file (Keeps code modular and clean) -->
+  <script src="walkinguest.js"></script>
 </body>
 </html>

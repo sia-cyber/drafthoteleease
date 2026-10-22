@@ -3,637 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HotelEase - Front Desk Admin Dashboard</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Fraunces & DM Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Custom CSS Stylesheet -->
+    <title>HotelEase - Front Desk Management Subsystem</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkCyan: '#0f766e',
-                        darkAzure: '#183b56',
-                        turquoise: '#368981',
-                        greyBlue: '#627d98',
-                        pastelGrayAzure: '#b6c9d8',
-                        lightAzure: '#c9d9e7',
-                        darkBgAzure: '#102a43',
-                    },
-                    fontFamily: {
-                        heading: ['Fraunces', 'serif'],
-                        body: ['DM Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="text-slate-800 antialiased flex flex-col min-h-screen">
+<body>
 
-    <!-- Top Admin Header -->
-    <header class="bg-darkAzure/80 backdrop-blur-md border-b border-white/10 text-white sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Branding & Admin System Identifier -->
-            <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 rounded-xl bg-darkCyan flex items-center justify-center text-white shadow-lg border border-turquoise/40">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <!-- Round Teal HE Logo Emblem -->
+            <div class="logo-container">
+                <svg viewBox="0 0 500 500" class="he-logo" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="235" fill="#0d2b38" stroke="#ffffff" stroke-width="12"/>
+                    <circle cx="250" cy="250" r="210" fill="none" stroke="#ffffff" stroke-width="4"/>
+                    <path d="M180 390 V200 A70 70 0 0 1 320 200 V390" fill="#0b3d4c" stroke="#ffffff" stroke-width="8"/>
+                    <path d="M225 155 A25 25 0 0 1 275 155 Z" fill="#20b2aa"/>
+                    <path d="M195 190 L220 160 M305 190 L280 160 M250 150 V195 M210 172 H290" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                    <g transform="translate(-10, 40)">
+                        <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                        <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                        <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                        <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                    </g>
+                    <g transform="translate(230, 40)">
+                        <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                        <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                        <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                        <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                    </g>
+                    <rect x="150" y="390" width="200" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                    <rect x="165" y="410" width="170" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                    <rect x="180" y="430" width="140" height="15" fill="#20b2aa" stroke="#ffffff" stroke-width="4"/>
+                    <text x="250" y="315" font-family="'Playfair Display', serif" font-size="95" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">HE</text>
+                </svg>
+            </div>
+            <div class="brand-info">
+                <div class="brand-title-row">
+                    <span class="brand-name">HotelEase</span>
+                    <span class="admin-badge">ADMIN PORTAL</span>
                 </div>
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <h1 class="text-xl font-bold tracking-tight font-fraunces text-white">HotelEase</h1>
-                        <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] font-extrabold px-2 py-0.5 rounded-md uppercase tracking-wider">
-                            ADMIN PORTAL
-                        </span>
-                    </div>
-                    <p class="text-[11px] text-pastelGrayAzure font-semibold tracking-wider uppercase">Front Desk Management Subsystem</p>
+                <span class="subsystem-subtitle">FRONT DESK MANAGEMENT SUBSYSTEM</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <!-- User Profile -->
+            <div class="user-profile">
+                <div class="avatar">SC</div>
+                <div class="user-details">
+                    <span class="user-name">Alex Morgan</span>
+                    <span class="user-role">Duty Manager • Morning Shift</span>
                 </div>
             </div>
-
-            <!-- Admin Staff Profile & Controls -->
-            <div class="flex items-center space-x-3 sm:space-x-5">
-                <!-- Staff Avatar & Shift Info -->
-                <div class="hidden md:flex items-center space-x-3 bg-white/10 px-3.5 py-1.5 rounded-2xl border border-white/10">
-                    <div class="w-8 h-8 rounded-full bg-turquoise text-white flex items-center justify-center font-bold text-xs shadow-inner">
-                        SC
-                    </div>
-                    <div class="text-left text-xs">
-                        <p class="font-bold text-white leading-tight">Alex Morgan</p>
-                        <p class="text-[10px] text-pastelGrayAzure">Duty Manager &bull; Morning Shift</p>
-                    </div>
-                </div>
-
-                <!-- Admin Quick Switcher / Refresh -->
-                <button onclick="refreshDashboard()" title="Refresh Reservation Queue" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition border border-white/15 active:scale-95">
-                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                </button>
-
-                <!-- Log Out Button -->
-                <button onclick="handleAdminLogout()" class="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 hover:text-white font-semibold text-xs transition duration-200 border border-rose-400/30 active:scale-95">
-                    <i data-lucide="log-out" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline uppercase">LOG OUT</span>
-                </button>
-            </div>
+            <!-- Hamburger Menu Trigger -->
+            <button class="hamburger-btn" id="hamburgerBtn" title="Menu & Logout">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Main Admin Dashboard Workstation -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col justify-center">
-        
-        <!-- Main Wireframe Title Header -->
-        <div class="mb-10 text-center">
-            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-semibold text-lightAzure mb-3">
-                <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-amber-300"></i>
-                <span>Staff Dispatch & Entry Portal</span>
+    <!-- SIDEBAR NAVIGATION DRAWER -->
+    <aside class="sidebar-drawer" id="sidebarDrawer">
+        <div class="sidebar-header">
+            <h3>Navigation Menu</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        <ul class="sidebar-nav-list">
+            <li><a href="#" id="openOnlineBookingNav"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> Online Booking</a></li>
+            <li><a href="#" id="walkinNavBtn"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Walk in Booking</a></li>
+            <li><a href="#"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Room Occupancy</a></li>
+            <li><a href="#"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Guests Feedback</a></li>
+            <li class="sidebar-divider"></li>
+            <li><a href="#" class="logout-link" id="logoutBtn"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout</a></li>
+        </ul>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="dashboard-main" id="dashboardMain">
+        <div class="dashboard-header-row">
+            <h1 class="page-title">Dashboard Overview</h1>
+            <div class="live-status-pill">
+                <span class="pulse-dot"></span> System Live & Synced
             </div>
-            <h2 class="text-3xl sm:text-5xl font-bold text-white font-fraunces tracking-wide drop-shadow-md">
-                GUEST CHECK-IN PORTAL
-            </h2>
-            <div class="w-32 h-1 bg-turquoise/80 mx-auto mt-4 rounded-full shadow-sm"></div>
-            <p class="text-pastelGrayAzure text-xs sm:text-sm mt-3 max-w-lg mx-auto font-body leading-relaxed">
-                Choose the booking channel to verify online guest reservations or issue immediate keys for walk-in arrivals.
-            </p>
         </div>
 
-        <!-- 2 Main Interactive Portal Cards (Wireframe Boxes) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto w-full">
-            
-            <!-- LEFT BOX: Online Reservation Requests Portal Card -->
-            <div class="relative group">
-                <!-- Highly Noticeable, Perfectly Circular Notification Alert Badge -->
-                <div id="notif-badge" onclick="openOnlineModal()" class="vivid-notif-badge absolute -top-5 -right-5 z-30 w-16 h-16 bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-400 text-white rounded-full flex flex-col items-center justify-center font-extrabold font-body shadow-2xl border-4 border-white transition-all transform group-hover:scale-115 cursor-pointer select-none" title="Pending Online Requests Require Confirmation">
-                    <span id="pending-count" class="text-2xl leading-none font-black drop-shadow-md">3</span>
-                    <span class="text-[8px] font-extrabold uppercase tracking-widest leading-none mt-0.5 text-rose-100">QUEUE</span>
+        <!-- TOP 3 KPI CARDS -->
+        <section class="kpi-grid">
+            <div class="kpi-card interactive" id="openOnlineBookingCard">
+                <div class="kpi-card-glow teal"></div>
+                <div class="kpi-top">
+                    <h3>Overall Room Occupancy Rate</h3>
+                    <span class="kpi-icon-badge teal">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    </span>
                 </div>
-
-                <!-- Left Card Button -->
-                <button onclick="openOnlineModal()" class="w-full h-full bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/40 text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-emerald-950/40 flex flex-col justify-between group-hover:border-darkCyan focus:outline-none focus:ring-4 focus:ring-turquoise/40">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-darkCyan/10 text-darkCyan flex items-center justify-center border border-darkCyan/20 group-hover:bg-darkCyan group-hover:text-white transition-colors duration-300 shadow-inner">
-                                <i data-lucide="laptop" class="w-8 h-8"></i>
-                            </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-3 py-1 rounded-full border border-rose-200 flex items-center gap-1.5 shadow-sm">
-                                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                                Urgent Action
-                            </span>
-                        </div>
-                        
-                        <h3 class="text-2xl font-bold text-darkAzure font-fraunces mb-2 group-hover:text-darkCyan transition-colors">
-                            ONLINE BOOKING
-                        </h3>
-                        <p class="text-xs sm:text-sm text-greyBlue leading-relaxed mb-6">
-                            Review online reservation requests queue. Confirm guest identities, inspect pre-payments, and assign room numbers before guest arrival.
-                        </p>
-                    </div>
-
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-darkCyan uppercase tracking-wider flex items-center gap-1.5">
-                            <i data-lucide="inbox" class="w-4 h-4"></i> Open Admin Queue
-                        </span>
-                        <div class="w-9 h-9 rounded-full bg-slate-100 text-darkAzure group-hover:bg-darkCyan group-hover:text-white flex items-center justify-center transition-colors shadow-sm">
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                </button>
+                <div class="kpi-value">72%</div>
+                <div class="kpi-trend positive"><span>↑ 4.5%</span> from yesterday</div>
             </div>
 
-            <!-- RIGHT BOX: Walk-In Guest Entry Portal Card -->
-            <div class="relative group">
-                <!-- Right Card Button -->
-                <button onclick="openWalkInModal()" class="w-full h-full bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/40 text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-emerald-950/40 flex flex-col justify-between group-hover:border-turquoise focus:outline-none focus:ring-4 focus:ring-turquoise/40">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-turquoise/10 text-turquoise flex items-center justify-center border border-turquoise/20 group-hover:bg-turquoise group-hover:text-white transition-colors duration-300 shadow-inner">
-                                <i data-lucide="user-check" class="w-8 h-8"></i>
-                            </div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
-                                Express Check-In
-                            </span>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-darkAzure font-fraunces mb-2 group-hover:text-turquoise transition-colors">
-                            WALK-IN GUEST
-                        </h3>
-                        <p class="text-xs sm:text-sm text-greyBlue leading-relaxed mb-6">
-                            Register new front-desk arrivals directly. Select vacant room inventory, capture identification, collect payment, and issue digital keycards.
-                        </p>
-                    </div>
-
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-turquoise uppercase tracking-wider flex items-center gap-1.5">
-                            <i data-lucide="key" class="w-4 h-4"></i> Walk-In Entry Form
-                        </span>
-                        <div class="w-9 h-9 rounded-full bg-slate-100 text-darkAzure group-hover:bg-turquoise group-hover:text-white flex items-center justify-center transition-colors shadow-sm">
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                        </div>
-                    </div>
-                </button>
+            <div class="kpi-card">
+                <div class="kpi-card-glow pink"></div>
+                <div class="kpi-top">
+                    <h3>Total New Bookings</h3>
+                    <span class="kpi-icon-badge pink">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </span>
+                </div>
+                <div class="kpi-value">24</div>
+                <div class="kpi-trend positive"><span>+8</span> received today</div>
             </div>
 
-        </div>
+            <div class="kpi-card">
+                <div class="kpi-card-glow gold"></div>
+                <div class="kpi-top">
+                    <h3>Total Guest Check-ins for Today</h3>
+                    <span class="kpi-icon-badge gold">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    </span>
+                </div>
+                <div class="kpi-value">9</div>
+                <div class="kpi-subtitle">Completed & processed</div>
+            </div>
+        </section>
 
-        <!-- Live Front-Desk Admin Metrics Bar -->
-        <div class="mt-10 bg-darkAzure/60 backdrop-blur-md rounded-2xl p-4 max-w-4xl mx-auto w-full border border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-white text-center shadow-xl">
-            <div class="border-r border-white/10 last:border-none p-2">
-                <p class="text-[10px] text-pastelGrayAzure uppercase font-bold tracking-wider">Pending Online Queue</p>
-                <p id="stat-pending" class="text-2xl font-bold font-fraunces text-amber-300 mt-0.5">3 Requests</p>
+        <!-- BOTTOM ANALYTICS CARDS -->
+        <section class="analytics-grid">
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="widget-tag">Occupancy Metric</span>
+                    <span class="widget-dot"></span>
+                </div>
+                <div class="chart-container-doughnut">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle-fill" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                    <div class="doughnut-center-text">72.00%</div>
+                </div>
+                <h4 class="chart-title">Room Occupancy Rate</h4>
             </div>
-            <div class="border-r border-white/10 last:border-none p-2">
-                <p class="text-[10px] text-pastelGrayAzure uppercase font-bold tracking-wider">Vacant Ready Rooms</p>
-                <p id="stat-rooms" class="text-2xl font-bold font-fraunces text-emerald-300 mt-0.5">14 Vacant</p>
-            </div>
-            <div class="border-r border-white/10 last:border-none p-2">
-                <p class="text-[10px] text-pastelGrayAzure uppercase font-bold tracking-wider">Today's Total Check-Ins</p>
-                <p id="stat-confirmed" class="text-2xl font-bold font-fraunces text-lightAzure mt-0.5">8 Processed</p>
-            </div>
-            <div class="p-2">
-                <p class="text-[10px] text-pastelGrayAzure uppercase font-bold tracking-wider">System Occupancy</p>
-                <p class="text-2xl font-bold font-fraunces text-teal-200 mt-0.5">72% Full</p>
-            </div>
-        </div>
 
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="widget-tag">Activity Trend</span>
+                    <span class="widget-dot"></span>
+                </div>
+                <div class="chart-container-line">
+                    <svg viewBox="0 0 500 220" class="line-graph-svg">
+                        <line x1="40" y1="30" x2="480" y2="30" stroke="rgba(0,0,0,0.06)" stroke-width="1.5" />
+                        <line x1="40" y1="75" x2="480" y2="75" stroke="rgba(0,0,0,0.06)" stroke-width="1.5" />
+                        <line x1="40" y1="120" x2="480" y2="120" stroke="rgba(0,0,0,0.06)" stroke-width="1.5" />
+                        <line x1="40" y1="165" x2="480" y2="165" stroke="rgba(0,0,0,0.06)" stroke-width="1.5" />
+
+                        <polygon points="50,140 115,110 180,50 245,120 310,80 375,30 440,95 440,165 50,165" fill="url(#lineGradient)" opacity="0.15" />
+                        <path d="M50,140 L115,110 L180,50 L245,120 L310,80 L375,30 L440,95" fill="none" stroke="#20b2aa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="140" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="115" cy="110" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="180" cy="50" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="245" cy="120" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="310" cy="80" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="375" cy="30" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="440" cy="95" r="5" fill="#ff5e7e" stroke="#ffffff" stroke-width="2"/>
+
+                        <text x="50" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 16</text>
+                        <text x="115" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 17</text>
+                        <text x="180" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 18</text>
+                        <text x="245" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 19</text>
+                        <text x="310" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 20</text>
+                        <text x="375" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Oct 21</text>
+                        <text x="440" y="195" text-anchor="middle" fill="#718096" font-size="11" font-weight="600">Today</text>
+
+                        <defs>
+                            <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#20b2aa" />
+                                <stop offset="100%" stop-color="#20b2aa" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h4 class="chart-title">Guest Check-ins Trend per Day</h4>
+            </div>
+        </section>
     </main>
 
-    <!-- ADMIN MODAL 1: Online Reservation Requests Approval & Room Assignment Queue -->
-    <div id="online-modal" class="fixed inset-0 bg-darkBgAzure/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl border border-white/30 flex flex-col max-h-[88vh]">
-            
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-darkCyan text-white flex items-center justify-center shadow-md">
-                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+    <!-- FLOATING ONLINE BOOKING OVERLAY MODAL -->
+    <div class="booking-modal-overlay" id="bookingModalOverlay">
+        <div class="booking-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-box">
+                    <div class="modal-logo-badge">
+                        <svg viewBox="0 0 500 500" class="he-modal-logo" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="250" cy="250" r="235" fill="#0d2b38" stroke="#ffffff" stroke-width="12"/>
+                            <circle cx="250" cy="250" r="210" fill="none" stroke="#ffffff" stroke-width="4"/>
+                            <path d="M180 390 V200 A70 70 0 0 1 320 200 V390" fill="#0b3d4c" stroke="#ffffff" stroke-width="8"/>
+                            <path d="M225 155 A25 25 0 0 1 275 155 Z" fill="#20b2aa"/>
+                            <path d="M195 190 L220 160 M305 190 L280 160 M250 150 V195 M210 172 H290" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                            <g transform="translate(-10, 40)">
+                                <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                                <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                                <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                                <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                            </g>
+                            <g transform="translate(230, 40)">
+                                <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                                <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                                <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                                <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                            </g>
+                            <rect x="150" y="390" width="200" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                            <rect x="165" y="410" width="170" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                            <rect x="180" y="430" width="140" height="15" fill="#20b2aa" stroke="#ffffff" stroke-width="4"/>
+                            <text x="250" y="315" font-family="'Playfair Display', serif" font-size="95" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">HE</text>
+                        </svg>
                     </div>
                     <div>
-                        <div class="flex items-center gap-2">
-                            <h3 class="text-xl font-bold text-darkAzure font-fraunces">Online Reservation Requests</h3>
-                            <span id="modal-queue-count" class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full">3 Pending</span>
+                        <div class="modal-title-row">
+                            <h2>Online Reservation Requests</h2>
+                            <span class="pending-pill">3 Pending</span>
                         </div>
-                        <p class="text-xs text-greyBlue">Verify guest booking details, assign physical room numbers, and confirm reservations.</p>
+                        <p class="modal-subtitle">Verify guest booking details, assign physical room numbers, and confirm reservations.</p>
                     </div>
                 </div>
-                <button onclick="closeOnlineModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <button class="modal-close-btn" id="closeBookingModal">&times;</button>
             </div>
 
-            <!-- Queue List Container -->
-            <div id="requests-queue-container" class="flex-grow overflow-y-auto py-4 space-y-4 my-2 pr-1">
-                <!-- Injected dynamically via JS -->
-            </div>
-
-            <!-- Modal Footer Controls -->
-            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <button onclick="resetDemoData()" class="text-xs text-darkCyan font-bold hover:underline flex items-center gap-1">
-                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Reset Demo Queue
-                </button>
-                <div class="flex items-center space-x-3">
-                    <button onclick="closeOnlineModal()" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-darkAzure bg-slate-100 hover:bg-slate-200 rounded-xl transition">
-                        Close Workstation
-                    </button>
+            <div class="modal-body">
+                <!-- Reservation Card 1 -->
+                <div class="reservation-card">
+                    <div class="res-card-top">
+                        <div class="guest-primary">
+                            <span class="ref-badge">REQ-101</span>
+                            <span class="guest-name">Sophia Reynolds</span>
+                        </div>
+                        <span class="status-tag yellow">Pending Confirmation</span>
+                    </div>
+                    <div class="guest-email">sophia.r@example.com • +1 (555) 234-5678</div>
+                    <div class="details-grid">
+                        <div class="detail-item"><span class="detail-label">Room Category:</span><span class="detail-val">Deluxe Ocean View</span></div>
+                        <div class="detail-item"><span class="detail-label">Stay Dates:</span><span class="detail-val">Oct 24 – Oct 28 (4 nights)</span></div>
+                        <div class="detail-item"><span class="detail-label">Guests:</span><span class="detail-val">2 Person(s)</span></div>
+                        <div class="detail-item"><span class="detail-label">Pre-Auth Rate:</span><span class="detail-val price">$720</span></div>
+                    </div>
+                    <div class="action-row">
+                        <div class="assign-box">
+                            <label>Assign Room:</label>
+                            <select class="room-select">
+                                <option value="302">Room 302 (Vacant Clean)</option>
+                                <option value="304">Room 304 (Vacant Clean)</option>
+                            </select>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn-reject">Reject Request</button>
+                            <button class="btn-confirm">Confirm Booking</button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Reservation Card 2 -->
+                <div class="reservation-card">
+                    <div class="res-card-top">
+                        <div class="guest-primary">
+                            <span class="ref-badge">REQ-102</span>
+                            <span class="guest-name">Liam Chen</span>
+                        </div>
+                        <span class="status-tag yellow">Pending Confirmation</span>
+                    </div>
+                    <div class="guest-email">liam.chen@techcorp.io • +1 (555) 876-5432</div>
+                    <div class="details-grid">
+                        <div class="detail-item"><span class="detail-label">Room Category:</span><span class="detail-val">Executive King Suite</span></div>
+                        <div class="detail-item"><span class="detail-label">Stay Dates:</span><span class="detail-val">Oct 22 – Oct 25 (3 nights)</span></div>
+                        <div class="detail-item"><span class="detail-label">Guests:</span><span class="detail-val">1 Person(s)</span></div>
+                        <div class="detail-item"><span class="detail-label">Pre-Auth Rate:</span><span class="detail-val price">$650</span></div>
+                    </div>
+                    <div class="action-row">
+                        <div class="assign-box">
+                            <label>Assign Room:</label>
+                            <select class="room-select">
+                                <option value="401">Room 401 (Vacant Clean)</option>
+                                <option value="405">Room 405 (Vacant Clean)</option>
+                            </select>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn-reject">Reject Request</button>
+                            <button class="btn-confirm">Confirm Booking</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-link" id="resetDemoBtn">Reset Demo Queue</button>
+                <button class="btn-close-workstation" id="closeWorkstationBtn">CLOSE WORKSTATION</button>
             </div>
         </div>
     </div>
 
-    <!-- ADMIN MODAL 2: Front-Desk Walk-In Express Entry Portal -->
-    <div id="walkin-modal" class="fixed inset-0 bg-darkBgAzure/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-white/30 max-h-[92vh] overflow-y-auto">
-            
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-turquoise text-white flex items-center justify-center shadow-md">
-                        <i data-lucide="user-plus" class="w-5 h-5"></i>
+    <!-- WALK-IN BOOKING FLOATING MODAL OVERLAY -->
+    <div class="modal-overlay" id="walkinModalOverlay">
+        <div class="modal-card">
+            <!-- FIXED HEADER -->
+            <div class="modal-header-flex">
+                <div class="modal-title-area">
+                    <div class="modal-icon-badge">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-darkAzure font-fraunces">Walk-In Express Check-In</h3>
-                        <p class="text-xs text-greyBlue">Admin front-desk instant room assignment & keycard generation</p>
+                        <div class="modal-title-row">
+                            <h2 class="heading-font" style="font-size: 20px; color: #102a43;">Walk-In Express Check-In</h2>
+                            <span class="modal-status-badge">Front Desk</span>
+                        </div>
+                        <p class="modal-subtitle" style="font-size: 13px; color: #627d98;">Register a walk-in guest into the PMS and allocate room access.</p>
                     </div>
                 </div>
-                <button onclick="closeWalkInModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <button class="close-modal" id="closeWalkinModal">&times;</button>
             </div>
 
-            <!-- Registration Form -->
-            <form id="walkin-form" onsubmit="handleWalkInSubmit(event)" class="py-4 space-y-4">
-                
-                <div>
-                    <label class="block text-xs font-bold text-darkAzure uppercase mb-1">Guest Full Name *</label>
-                    <input type="text" id="walkin-name" required placeholder="e.g. Jonathan Mercer" class="w-full text-sm border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-turquoise/50 focus:border-turquoise outline-none">
+            <form id="dashboard-walkin-form">
+                <!-- SCROLLABLE BODY CONTAINER -->
+                <div class="walkin-modal-body">
+                    <div class="form-section-card">
+                        <div class="form-section-title">Guest Information</div>
+                        <div class="modal-input-group">
+                            <label for="modal-walkin-name">Full Name</label>
+                            <input type="text" id="modal-walkin-name" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-row-2">
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-contact">Contact Number</label>
+                                <input type="tel" id="modal-walkin-contact" placeholder="e.g. +63 912 345 6789" required>
+                            </div>
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-email">Email Address</label>
+                                <input type="email" id="modal-walkin-email" placeholder="e.g. john@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-card">
+                        <div class="form-section-title">Reservation Details</div>
+                        <div class="form-row-2">
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-checkin">Check-in Date</label>
+                                <input type="date" id="modal-walkin-checkin" required>
+                            </div>
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-checkout">Check-out Date</label>
+                                <input type="date" id="modal-walkin-checkout" required>
+                            </div>
+                        </div>
+                        <div class="form-row-3">
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-hours">Hours Stay</label>
+                                <input type="number" id="modal-walkin-hours" placeholder="e.g. 3" min="1">
+                            </div>
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-guests">Guests</label>
+                                <input type="number" id="modal-walkin-guests" value="1" min="1" required>
+                            </div>
+                            <div class="modal-input-group">
+                                <label for="modal-walkin-rooms">Rooms</label>
+                                <input type="number" id="modal-walkin-rooms" value="1" min="1" required>
+                            </div>
+                        </div>
+                        <div class="modal-input-group">
+                            <label for="modal-walkin-room">Preferred Room Type</label>
+                            <select id="modal-walkin-room" required>
+                                <option value="Economy Room">Economy Room ($75/night)</option>
+                                <option value="Standard Room">Standard Room ($95/night)</option>
+                                <option value="Family Room">Family Room ($130/night)</option>
+                                <option value="Deluxe Room">Deluxe Room ($160/night)</option>
+                                <option value="Executive Room">Executive Room ($210/night)</option>
+                                <option value="Presidential Suite">Presidential Suite ($350/night)</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-darkAzure uppercase mb-1">Phone / Contact *</label>
-                        <input type="text" id="walkin-contact" required placeholder="+1 (555) 019-2834" class="w-full text-sm border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-turquoise/50 focus:border-turquoise outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-darkAzure uppercase mb-1">ID / Passport Verification *</label>
-                        <input type="text" id="walkin-id" required placeholder="PASSPORT # A-982341" class="w-full text-sm border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-turquoise/50 focus:border-turquoise outline-none">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-darkAzure uppercase mb-1">Assign Vacant Room *</label>
-                        <select id="walkin-room" onchange="calculateWalkinTotal()" required class="w-full text-sm border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-turquoise/50 focus:border-turquoise outline-none bg-white">
-                            <option value="101|180">Room 101 - Deluxe Suite ($180/night)</option>
-                            <option value="205|220">Room 205 - Executive King ($220/night)</option>
-                            <option value="304|260">Room 304 - Ocean View ($260/night)</option>
-                            <option value="501|450">Room 501 - Penthouse ($450/night)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-darkAzure uppercase mb-1">Stay Duration *</label>
-                        <select id="walkin-nights" onchange="calculateWalkinTotal()" required class="w-full text-sm border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-turquoise/50 focus:border-turquoise outline-none bg-white">
-                            <option value="1">1 Night</option>
-                            <option value="2" selected>2 Nights</option>
-                            <option value="3">3 Nights</option>
-                            <option value="5">5 Nights</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Admin Rate Breakdown -->
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
-                    <div class="flex justify-between text-slate-600">
-                        <span>Payment Terminal Status:</span>
-                        <span class="font-bold text-emerald-600 flex items-center gap-1">
-                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Terminal Connected
-                        </span>
-                    </div>
-                    <div class="flex justify-between text-slate-600 pt-1 border-t border-slate-200">
-                        <span class="font-bold text-darkAzure">Calculated Total Charge:</span>
-                        <span id="walkin-total-price" class="font-extrabold text-base text-darkCyan">$440 USD</span>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-100">
-                    <button type="button" onclick="closeWalkInModal()" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-greyBlue hover:text-darkAzure bg-slate-100 hover:bg-slate-200 rounded-xl transition">
-                        Cancel
-                    </button>
-                    <button type="submit" class="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-turquoise hover:bg-darkCyan rounded-xl shadow-md transition flex items-center gap-2">
-                        <i data-lucide="key-round" class="w-4 h-4"></i> Issue Key & Complete Check-In
-                    </button>
+                <!-- FIXED FOOTER BAR -->
+                <div class="modal-footer-bar">
+                    <button type="button" class="modal-btn-secondary" id="cancelWalkinBtn">Clear Form</button>
+                    <button type="submit" class="modal-btn-primary">Confirm & Allocate Room Key</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Admin Notification Toast -->
-    <div id="toast" class="fixed bottom-6 right-6 bg-darkAzure text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-turquoise/40 flex items-center space-x-3 transform translate-y-24 opacity-0 transition-all duration-300 z-50">
-        <div id="toast-icon" class="text-emerald-400">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
-        </div>
-        <div id="toast-message" class="text-xs sm:text-sm font-semibold">Admin Notification</div>
-    </div>
-
-    <!-- Application JavaScript Logic -->
-    <script>
-        let onlineRequests = [
-            {
-                id: 'REQ-101',
-                guestName: 'Sophia Reynolds',
-                email: 'sophia.r@example.com',
-                phone: '+1 (555) 234-5678',
-                roomType: 'Deluxe Ocean View',
-                dates: 'Oct 24 - Oct 28 (4 nights)',
-                guestsCount: 2,
-                totalPrice: '$720',
-                availableRooms: ['Room 302', 'Room 304', 'Room 308']
-            },
-            {
-                id: 'REQ-102',
-                guestName: 'Liam Chen',
-                email: 'liam.chen@techcorp.io',
-                phone: '+1 (555) 876-5432',
-                roomType: 'Executive King Suite',
-                dates: 'Oct 22 - Oct 25 (3 nights)',
-                guestsCount: 1,
-                totalPrice: '$650',
-                availableRooms: ['Room 205', 'Room 207']
-            },
-            {
-                id: 'REQ-103',
-                guestName: 'Amara Okezie',
-                email: 'amara.o@designlab.com',
-                phone: '+1 (555) 345-6789',
-                roomType: 'Family Standard Suite',
-                dates: 'Nov 01 - Nov 05 (4 nights)',
-                guestsCount: 4,
-                totalPrice: '$980',
-                availableRooms: ['Room 104', 'Room 106']
-            }
-        ];
-
-        let totalConfirmedCount = 8;
-        let vacantRoomsCount = 14;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateBadgeAndStats();
-            calculateWalkinTotal();
-            lucide.createIcons();
-        });
-
-        function updateBadgeAndStats() {
-            const count = onlineRequests.length;
-            const badgeCountEl = document.getElementById('pending-count');
-            const modalQueueCountEl = document.getElementById('modal-queue-count');
-            const badgeEl = document.getElementById('notif-badge');
-            const statPendingEl = document.getElementById('stat-pending');
-            const statRoomsEl = document.getElementById('stat-rooms');
-
-            badgeCountEl.innerText = count;
-            modalQueueCountEl.innerText = `${count} Pending`;
-            statPendingEl.innerText = `${count} Requests`;
-            statRoomsEl.innerText = `${vacantRoomsCount} Vacant`;
-
-            if (count === 0) {
-                badgeEl.classList.remove('vivid-notif-badge', 'from-rose-600', 'via-rose-500', 'to-amber-400');
-                badgeEl.classList.add('bg-slate-400', 'border-slate-200');
-            } else {
-                badgeEl.classList.remove('bg-slate-400', 'border-slate-200');
-                badgeEl.classList.add('vivid-notif-badge', 'from-rose-600', 'via-rose-500', 'to-amber-400');
-            }
-        }
-
-        function openOnlineModal() {
-            renderOnlineQueue();
-            document.getElementById('online-modal').classList.remove('hidden');
-        }
-
-        function closeOnlineModal() {
-            document.getElementById('online-modal').classList.add('hidden');
-        }
-
-        function openWalkInModal() {
-            document.getElementById('walkin-modal').classList.remove('hidden');
-        }
-
-        function closeWalkInModal() {
-            document.getElementById('walkin-modal').classList.add('hidden');
-            document.getElementById('walkin-form').reset();
-            calculateWalkinTotal();
-        }
-
-        function calculateWalkinTotal() {
-            const roomVal = document.getElementById('walkin-room').value;
-            const nights = parseInt(document.getElementById('walkin-nights').value, 10);
-            const rate = parseInt(roomVal.split('|')[1], 10);
-            const total = rate * nights;
-            document.getElementById('walkin-total-price').innerText = `$${total} USD`;
-        }
-
-        function renderOnlineQueue() {
-            const container = document.getElementById('requests-queue-container');
-            container.innerHTML = '';
-
-            if (onlineRequests.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 px-4 border-2 border-dashed border-slate-200 rounded-2xl">
-                        <i data-lucide="check-circle" class="w-12 h-12 text-emerald-500 mx-auto mb-2"></i>
-                        <h4 class="text-base font-bold text-darkAzure font-fraunces">All Online Requests Processed!</h4>
-                        <p class="text-xs text-greyBlue mt-1">There are currently no pending guest online reservations awaiting confirmation.</p>
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            onlineRequests.forEach(req => {
-                const item = document.createElement('div');
-                item.className = "bg-slate-50 border border-slate-200 hover:border-darkCyan/40 rounded-2xl p-4 transition shadow-sm";
-                item.innerHTML = `
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-extrabold text-darkCyan bg-darkCyan/10 px-2 py-0.5 rounded-md border border-darkCyan/20">${req.id}</span>
-                                <h4 class="text-base font-bold text-darkAzure font-fraunces">${req.guestName}</h4>
-                            </div>
-                            <p class="text-xs text-greyBlue mt-0.5">${req.email} &bull; ${req.phone}</p>
-                        </div>
-                        <span class="text-[11px] font-bold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full border border-amber-200 flex items-center gap-1">
-                            <i data-lucide="clock" class="w-3 h-3"></i> Pending Confirmation
-                        </span>
-                    </div>
-
-                    <div class="bg-white p-3 rounded-xl border border-slate-200 my-2 text-xs grid grid-cols-2 sm:grid-cols-4 gap-2 text-slate-700">
-                        <div>
-                            <span class="text-greyBlue font-medium block">Room Category:</span>
-                            <span class="font-bold text-darkAzure">${req.roomType}</span>
-                        </div>
-                        <div>
-                            <span class="text-greyBlue font-medium block">Stay Dates:</span>
-                            <span class="font-semibold text-darkAzure">${req.dates}</span>
-                        </div>
-                        <div>
-                            <span class="text-greyBlue font-medium block">Guests:</span>
-                            <span class="font-semibold text-darkAzure">${req.guestsCount} Person(s)</span>
-                        </div>
-                        <div>
-                            <span class="text-greyBlue font-medium block">Pre-Auth Rate:</span>
-                            <span class="font-extrabold text-darkCyan">${req.totalPrice}</span>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-                        <div class="flex items-center space-x-2 w-full sm:w-auto">
-                            <label class="text-xs font-bold text-darkAzure whitespace-nowrap">Assign Room:</label>
-                            <select id="room-select-${req.id}" class="text-xs border border-slate-300 rounded-lg p-1.5 bg-white text-darkAzure font-semibold focus:ring-2 focus:ring-darkCyan outline-none w-full sm:w-auto">
-                                ${req.availableRooms.map(r => `<option value="${r}">${r} (Vacant Clean)</option>`).join('')}
-                            </select>
-                        </div>
-
-                        <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
-                            <button onclick="declineRequest('${req.id}')" class="px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-50 border border-rose-200 rounded-xl transition flex items-center gap-1">
-                                <i data-lucide="x-circle" class="w-3.5 h-3.5"></i> Reject Request
-                            </button>
-                            <button onclick="confirmOnlineRequest('${req.id}')" class="px-4 py-1.5 text-xs font-bold text-white bg-darkCyan hover:bg-turquoise rounded-xl shadow transition flex items-center gap-1">
-                                <i data-lucide="check" class="w-3.5 h-3.5"></i> Confirm Booking
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-
-            lucide.createIcons();
-        }
-
-        function confirmOnlineRequest(reqId) {
-            const index = onlineRequests.findIndex(r => r.id === reqId);
-            if (index !== -1) {
-                const req = onlineRequests[index];
-                const selectedRoom = document.getElementById(`room-select-${reqId}`).value;
-                onlineRequests.splice(index, 1);
-                
-                totalConfirmedCount++;
-                vacantRoomsCount = Math.max(0, vacantRoomsCount - 1);
-
-                document.getElementById('stat-confirmed').innerText = `${totalConfirmedCount} Processed`;
-
-                renderOnlineQueue();
-                updateBadgeAndStats();
-                showToast(`SUCCESS: ${req.guestName} confirmed for ${selectedRoom}!`, 'success');
-            }
-        }
-
-        function declineRequest(reqId) {
-            const index = onlineRequests.findIndex(r => r.id === reqId);
-            if (index !== -1) {
-                const req = onlineRequests[index];
-                onlineRequests.splice(index, 1);
-                
-                renderOnlineQueue();
-                updateBadgeAndStats();
-                showToast(`Online request for ${req.guestName} was rejected.`, 'error');
-            }
-        }
-
-        function handleWalkInSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('walkin-name').value;
-            const roomVal = document.getElementById('walkin-room').value;
-            const roomNum = roomVal.split('|')[0];
-
-            totalConfirmedCount++;
-            vacantRoomsCount = Math.max(0, vacantRoomsCount - 1);
-            document.getElementById('stat-confirmed').innerText = `${totalConfirmedCount} Processed`;
-
-            closeWalkInModal();
-            updateBadgeAndStats();
-            showToast(`WALK-IN SUCCESS: Room ${roomNum} assigned & Key issued to ${name}!`, 'success');
-        }
-
-        function resetDemoData() {
-            onlineRequests = [
-                {
-                    id: 'REQ-101',
-                    guestName: 'Sophia Reynolds',
-                    email: 'sophia.r@example.com',
-                    phone: '+1 (555) 234-5678',
-                    roomType: 'Deluxe Ocean View',
-                    dates: 'Oct 24 - Oct 28 (4 nights)',
-                    guestsCount: 2,
-                    totalPrice: '$720',
-                    availableRooms: ['Room 302', 'Room 304', 'Room 308']
-                },
-                {
-                    id: 'REQ-102',
-                    guestName: 'Liam Chen',
-                    email: 'liam.chen@techcorp.io',
-                    phone: '+1 (555) 876-5432',
-                    roomType: 'Executive King Suite',
-                    dates: 'Oct 22 - Oct 25 (3 nights)',
-                    guestsCount: 1,
-                    totalPrice: '$650',
-                    availableRooms: ['Room 205', 'Room 207']
-                },
-                {
-                    id: 'REQ-103',
-                    guestName: 'Amara Okezie',
-                    email: 'amara.o@designlab.com',
-                    phone: '+1 (555) 345-6789',
-                    roomType: 'Family Standard Suite',
-                    dates: 'Nov 01 - Nov 05 (4 nights)',
-                    guestsCount: 4,
-                    totalPrice: '$980',
-                    availableRooms: ['Room 104', 'Room 106']
-                }
-            ];
-            renderOnlineQueue();
-            updateBadgeAndStats();
-            showToast('Demo queue reloaded.', 'info');
-        }
-
-        function refreshDashboard() {
-            updateBadgeAndStats();
-            showToast('Admin Workstation synchronized with cloud server.', 'info');
-        }
-
-        function showToast(msg, type = 'success') {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            const toastIcon = document.getElementById('toast-icon');
-
-            toastMsg.innerText = msg;
-
-            if (type === 'error') {
-                toastIcon.innerHTML = `<i data-lucide="alert-triangle" class="w-5 h-5 text-rose-400"></i>`;
-            } else if (type === 'info') {
-                toastIcon.innerHTML = `<i data-lucide="info" class="w-5 h-5 text-sky-400"></i>`;
-            } else {
-                toastIcon.innerHTML = `<i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>`;
-            }
-
-            lucide.createIcons();
-
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 3500);
-        }
-
-        function handleAdminLogout() {
-            showToast('Logging out duty manager...', 'info');
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1200);
-        }
-    </script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
