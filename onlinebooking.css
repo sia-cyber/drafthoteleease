@@ -1,0 +1,145 @@
+/* ==========================================================================
+   ONLINE BOOKING DEDICATED PAGE STYLES
+   ========================================================================== */
+
+.page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.page-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Search Input Box */
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 16px 10px 38px;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 13px;
+    font-family: var(--font-sans);
+    outline: none;
+    width: 250px;
+    transition: all 0.2s ease;
+}
+
+.search-box input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-box input:focus {
+    border-color: var(--accent-teal);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* Status Filter Tabs */
+.filter-pills {
+    display: flex;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 4px;
+    border-radius: 12px;
+    gap: 4px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active, 
+.filter-btn:hover {
+    background: var(--accent-teal);
+    color: var(--white);
+}
+
+/* Workspace Main Container Card */
+.workspace-card {
+    background-color: var(--white);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+    color: var(--primary-dark);
+}
+
+.workspace-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #edf2f7;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.workspace-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.workspace-title-group h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.btn-link-teal {
+    background: none;
+    border: none;
+    color: #0f766e;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-link-teal:hover {
+    color: #0d2b38;
+    text-decoration: underline;
+}
+
+.reservations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

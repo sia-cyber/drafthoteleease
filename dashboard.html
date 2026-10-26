@@ -73,7 +73,7 @@
             <button class="close-sidebar" id="closeSidebar">&times;</button>
         </div>
         <ul class="sidebar-nav-list">
-            <li><a href="#" id="openOnlineBookingNav"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> Online Booking</a></li>
+            <li><a href="onlinebooking.html" id="openOnlineBookingNav"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> Online Booking</a></li>
             <li><a href="#" id="walkinNavBtn"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Walk in Booking</a></li>
             <li><a href="room-occupancy.html"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Room Occupancy</a></li>
             <li><a href="#"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Guests Feedback</a></li>
@@ -94,19 +94,19 @@
 
         <!-- TOP 3 KPI CARDS -->
         <section class="kpi-grid">
-            <div class="kpi-card interactive" id="openOnlineBookingCard">
+            <div class="kpi-card interactive" id="openOnlineBookingCard" onclick="window.location.href='onlinebooking.html'">
                 <div class="kpi-card-glow teal"></div>
                 <div class="kpi-top">
-                    <h3>Overall Room Occupancy Rate</h3>
+                    <h3>Available Rooms</h3>
                     <span class="kpi-icon-badge teal">
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                     </span>
                 </div>
-                <div class="kpi-value">72%</div>
-                <div class="kpi-trend positive"><span>↑ 4.5%</span> from yesterday</div>
+                <div class="kpi-value">28</div>
+                <div class="kpi-trend positive"><span>72%</span> currently occupied</div>
             </div>
 
-            <div class="kpi-card">
+            <div class="kpi-card interactive" onclick="window.location.href='onlinebooking.html'">
                 <div class="kpi-card-glow pink"></div>
                 <div class="kpi-top">
                     <h3>Total New Bookings</h3>
@@ -264,125 +264,12 @@
         </section>
     </main>
 
-    <!-- FLOATING ONLINE BOOKING OVERLAY MODAL -->
-    <div class="booking-modal-overlay" id="bookingModalOverlay">
-        <div class="booking-modal-card">
-            <div class="modal-header">
-                <div class="modal-title-box">
-                    <div class="modal-logo-badge">
-                        <svg viewBox="0 0 500 500" class="he-modal-logo" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="250" cy="250" r="235" fill="#0d2b38" stroke="#ffffff" stroke-width="12"/>
-                            <circle cx="250" cy="250" r="210" fill="none" stroke="#ffffff" stroke-width="4"/>
-                            <path d="M180 390 V200 A70 70 0 0 1 320 200 V390" fill="#0b3d4c" stroke="#ffffff" stroke-width="8"/>
-                            <path d="M225 155 A25 25 0 0 1 275 155 Z" fill="#20b2aa"/>
-                            <path d="M195 190 L220 160 M305 190 L280 160 M250 150 V195 M210 172 H290" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
-                            <g transform="translate(-10, 40)">
-                                <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
-                                <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
-                                <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
-                                <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
-                            </g>
-                            <g transform="translate(230, 40)">
-                                <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
-                                <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
-                                <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
-                                <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
-                            </g>
-                            <rect x="150" y="390" width="200" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
-                            <rect x="165" y="410" width="170" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
-                            <rect x="180" y="430" width="140" height="15" fill="#20b2aa" stroke="#ffffff" stroke-width="4"/>
-                            <text x="250" y="315" font-family="'Playfair Display', serif" font-size="95" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">HE</text>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="modal-title-row">
-                            <h2>Online Reservation Requests</h2>
-                            <span class="pending-pill">2 Pending</span>
-                        </div>
-                        <p class="modal-subtitle">Verify guest booking details, assign physical room numbers, and confirm reservations.</p>
-                    </div>
-                </div>
-                <button class="modal-close-btn" id="closeBookingModal">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <!-- Reservation Card 1 -->
-                <div class="reservation-card">
-                    <div class="res-card-top">
-                        <div class="guest-primary">
-                            <span class="ref-badge">REQ-101</span>
-                            <span class="guest-name">Sophia Reynolds</span>
-                        </div>
-                        <span class="status-tag yellow">Pending Confirmation</span>
-                    </div>
-                    <div class="guest-email">sophia.r@example.com • +1 (555) 234-5678</div>
-                    <div class="details-grid">
-                        <div class="detail-item"><span class="detail-label">Room Category:</span><span class="detail-val">Deluxe Room</span></div>
-                        <div class="detail-item"><span class="detail-label">Stay Dates:</span><span class="detail-val">Oct 24 – Oct 28 (4 nights)</span></div>
-                        <div class="detail-item"><span class="detail-label">Guests:</span><span class="detail-val">2 Person(s)</span></div>
-                        <div class="detail-item"><span class="detail-label">Pre-Auth Rate:</span><span class="detail-val price">₱4,200</span></div>
-                    </div>
-                    <div class="action-row">
-                        <div class="assign-box">
-                            <label>Assign Room:</label>
-                            <select class="room-select">
-                                <option value="302">Room 302 (Vacant Clean)</option>
-                                <option value="304">Room 304 (Vacant Clean)</option>
-                            </select>
-                        </div>
-                        <div class="btn-group">
-                            <button class="btn-reject">Reject Request</button>
-                            <button class="btn-confirm">Confirm Booking</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Reservation Card 2 -->
-                <div class="reservation-card">
-                    <div class="res-card-top">
-                        <div class="guest-primary">
-                            <span class="ref-badge">REQ-102</span>
-                            <span class="guest-name">Liam Chen</span>
-                        </div>
-                        <span class="status-tag yellow">Pending Confirmation</span>
-                    </div>
-                    <div class="guest-email">liam.chen@techcorp.io • +1 (555) 876-5432</div>
-                    <div class="details-grid">
-                        <div class="detail-item"><span class="detail-label">Room Category:</span><span class="detail-val">Executive Room</span></div>
-                        <div class="detail-item"><span class="detail-label">Stay Dates:</span><span class="detail-val">Oct 22 – Oct 25 (3 nights)</span></div>
-                        <div class="detail-item"><span class="detail-label">Guests:</span><span class="detail-val">1 Person(s)</span></div>
-                        <div class="detail-item"><span class="detail-label">Pre-Auth Rate:</span><span class="detail-val price">₱5,800</span></div>
-                    </div>
-                    <div class="action-row">
-                        <div class="assign-box">
-                            <label>Assign Room:</label>
-                            <select class="room-select">
-                                <option value="401">Room 401 (Vacant Clean)</option>
-                                <option value="405">Room 405 (Vacant Clean)</option>
-                            </select>
-                        </div>
-                        <div class="btn-group">
-                            <button class="btn-reject">Reject Request</button>
-                            <button class="btn-confirm">Confirm Booking</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn-link" id="resetDemoBtn">Reset Demo Queue</button>
-                <button class="btn-close-workstation" id="closeWorkstationBtn">CLOSE WORKSTATION</button>
-            </div>
-        </div>
-    </div>
-
     <!-- WALK-IN BOOKING FLOATING MODAL OVERLAY -->
     <div class="modal-overlay" id="walkinModalOverlay">
         <div class="modal-card">
             <!-- FIXED HEADER -->
             <div class="modal-header-flex">
                 <div class="modal-title-area">
-                    <!-- Embedded SVG vector logo (Will never show broken image icons) -->
                     <div class="modal-icon-badge">
                         <svg viewBox="0 0 500 500" class="modal-logo-img" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="250" cy="250" r="235" fill="#0d2b38" stroke="#ffffff" stroke-width="12"/>

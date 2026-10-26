@@ -15,67 +15,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeSidebar) closeSidebar.addEventListener('click', toggleSidebar);
     if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
 
-    // --- ONLINE BOOKING MODAL LOGIC ---
-    const bookingModalOverlay = document.getElementById('bookingModalOverlay');
+    // --- ONLINE BOOKING NAVIGATION ---
     const openOnlineBookingNav = document.getElementById('openOnlineBookingNav');
     const openOnlineBookingCard = document.getElementById('openOnlineBookingCard');
-    const closeBookingModal = document.getElementById('closeBookingModal');
-    const closeWorkstationBtn = document.getElementById('closeWorkstationBtn');
-
-    function openBookingModal() {
-        if (bookingModalOverlay) {
-            bookingModalOverlay.classList.add('open');
-        }
-        if (sidebarDrawer) sidebarDrawer.classList.remove('open');
-        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
-    }
-
-    function closeBookingModalFn() {
-        if (bookingModalOverlay) {
-            bookingModalOverlay.classList.remove('open');
-        }
-    }
 
     if (openOnlineBookingNav) {
         openOnlineBookingNav.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
-            openBookingModal();
+            window.location.href = 'onlinebooking.html';
         });
     }
 
     if (openOnlineBookingCard) {
-        openOnlineBookingCard.addEventListener('click', openBookingModal);
-    }
-
-    if (closeBookingModal) closeBookingModal.addEventListener('click', closeBookingModalFn);
-    if (closeWorkstationBtn) closeWorkstationBtn.addEventListener('click', closeBookingModalFn);
-
-    if (bookingModalOverlay) {
-        bookingModalOverlay.addEventListener('click', (e) => {
-            if (e.target === bookingModalOverlay) {
-                closeBookingModalFn();
-            }
+        openOnlineBookingCard.addEventListener('click', () => {
+            window.location.href = 'onlinebooking.html';
         });
     }
 
-    // --- WALK-IN BOOKING MODAL LOGIC ---
+    // --- WALK-IN BOOKING NAVIGATION ---
     const walkinNavBtn = document.getElementById('walkinNavBtn');
     const walkinModalOverlay = document.getElementById('walkinModalOverlay');
     const closeWalkinModal = document.getElementById('closeWalkinModal');
     const dashboardWalkinForm = document.getElementById('dashboard-walkin-form');
     const cancelWalkinBtn = document.getElementById('cancelWalkinBtn');
 
-    if (walkinNavBtn && walkinModalOverlay) {
+    if (walkinNavBtn) {
         walkinNavBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
-            if (sidebarDrawer) sidebarDrawer.classList.remove('open');
-            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
-            walkinModalOverlay.classList.add('active');
+            window.location.href = 'walkinbooking.html';
         });
     }
 
+    // Walk-in modal listeners (kept active if modal is used directly on dashboard page)
     if (closeWalkinModal && walkinModalOverlay) {
         closeWalkinModal.addEventListener('click', () => {
             walkinModalOverlay.classList.remove('active');

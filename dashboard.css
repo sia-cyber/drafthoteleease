@@ -1,7 +1,6 @@
 /* ==========================================================================
    1. DESIGN TOKENS & ROOT VARIABLES
    ========================================================================== */
-/* Defines global color palettes, typography stacks, and theme variables */
 :root {
     --primary-dark: #0c232c;
     --primary-teal: #163a47;
@@ -17,14 +16,12 @@
 /* ==========================================================================
    2. GLOBAL BASE & LAYOUT RESET
    ========================================================================== */
-/* Universal box-sizing and margin/padding reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Base page body styling, background gradient, and font initialization */
 body {
     font-family: var(--font-sans);
     background: linear-gradient(135deg, #09222b 0%, #0d323d 30%, #124b58 65%, #186877 100%);
@@ -37,7 +34,6 @@ body {
 /* ==========================================================================
    3. TOP NAVIGATION HEADER
    ========================================================================== */
-/* Main fixed top navigation bar container */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -52,7 +48,6 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Left section of header: Branding, logo, and subsystem labels */
 .nav-left {
     display: flex;
     align-items: center;
@@ -111,7 +106,6 @@ body {
     letter-spacing: 0.6px;
 }
 
-/* Right section of header: User profile card and mobile trigger */
 .nav-right {
     display: flex;
     align-items: center;
@@ -157,7 +151,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Hamburger toggle button for triggering navigation drawer */
 .hamburger-btn {
     width: 44px;
     height: 44px;
@@ -191,7 +184,6 @@ body {
 /* ==========================================================================
    4. SIDEBAR NAVIGATION DRAWER
    ========================================================================== */
-/* Off-canvas side drawer navigation container */
 .sidebar-drawer {
     position: fixed;
     top: 0;
@@ -208,7 +200,6 @@ body {
     box-shadow: 10px 0 30px rgba(0,0,0,0.5);
 }
 
-/* Active open state position for navigation drawer */
 .sidebar-drawer.open {
     left: 0;
 }
@@ -240,7 +231,6 @@ body {
     color: var(--white);
 }
 
-/* Sidebar navigation menu items and hover states */
 .sidebar-nav-list {
     list-style: none;
     display: flex;
@@ -275,7 +265,6 @@ body {
     margin: 12px 0;
 }
 
-/* Logout link styling inside sidebar menu */
 .logout-link {
     color: #ff6b6b !important;
 }
@@ -285,7 +274,6 @@ body {
     border-left-color: #ff6b6b !important;
 }
 
-/* Dimmed backdrop overlay displayed when sidebar menu is open */
 .sidebar-overlay {
     position: fixed;
     top: 0;
@@ -308,14 +296,12 @@ body {
 /* ==========================================================================
    5. DASHBOARD MAIN WORKSPACE
    ========================================================================== */
-/* Main page content wrapper layout */
 .dashboard-main {
     max-width: 1280px;
     margin: 0 auto;
     padding: 36px;
 }
 
-/* Dashboard header row with title and live system status indicator */
 .dashboard-header-row {
     display: flex;
     justify-content: space-between;
@@ -343,7 +329,6 @@ body {
     color: var(--accent-teal);
 }
 
-/* Animated pulsing status indicator dot */
 .pulse-dot {
     width: 8px;
     height: 8px;
@@ -362,7 +347,6 @@ body {
 /* ==========================================================================
    6. KEY PERFORMANCE INDICATORS (KPI) CARDS
    ========================================================================== */
-/* Top executive summary metrics grid */
 .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -370,7 +354,6 @@ body {
     margin-bottom: 32px;
 }
 
-/* Individual KPI metric card structure and hover dynamics */
 .kpi-card {
     position: relative;
     background-color: var(--card-bg);
@@ -395,7 +378,6 @@ body {
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
 }
 
-/* Colored accent glows for KPI cards */
 .kpi-card-glow {
     position: absolute;
     top: 0;
@@ -420,7 +402,6 @@ body {
     letter-spacing: 0.3px;
 }
 
-/* Icon badges with thematic background accents */
 .kpi-icon-badge {
     width: 40px;
     height: 40px;
@@ -449,7 +430,7 @@ body {
 }
 
 .kpi-trend.positive span {
-    color: #2e7d32;
+    color: #0f766e;
     font-weight: 700;
 }
 
@@ -461,7 +442,6 @@ body {
 /* ==========================================================================
    7. CHARTS & DATA ANALYTICS GRID
    ========================================================================== */
-/* Grid container for graphical visual charts */
 .analytics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -474,7 +454,6 @@ body {
     }
 }
 
-/* Card container for charts and metrics visualization */
 .analytics-card {
     background-color: var(--card-bg);
     color: var(--primary-dark);
@@ -515,7 +494,6 @@ body {
     border-radius: 50%;
 }
 
-/* Circular SVG Doughnut chart formatting */
 .chart-container-doughnut {
     position: relative;
     width: 210px;
@@ -569,7 +547,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Multi-segment Donut & Room Breakdown Legend */
 .occupancy-breakdown-wrapper {
     display: flex;
     align-items: center;
@@ -642,7 +619,6 @@ body {
     font-size: 12px;
 }
 
-/* SVG Line graph chart formatting */
 .chart-container-line {
     width: 100%;
     height: 220px;
@@ -669,7 +645,6 @@ body {
 /* ==========================================================================
    8. WALK-IN BOOKING FLOATING MODAL
    ========================================================================== */
-/* Fullscreen blurred overlay backdrop for walk-in booking popup */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -692,7 +667,6 @@ body {
     visibility: visible;
 }
 
-/* Floating dialog card container for walk-in booking */
 .modal-card {
     background: #ffffff;
     color: #0c232c;
@@ -714,7 +688,6 @@ body {
     transform: translateY(0);
 }
 
-/* Modal header area layout */
 .modal-header-flex {
     padding: 24px 32px 18px 32px;
     display: flex;
@@ -729,7 +702,6 @@ body {
     gap: 16px;
 }
 
-/* Modal logo badge container */
 .modal-icon-badge {
     width: 44px;
     height: 44px;
@@ -740,7 +712,6 @@ body {
     margin-top: 2px;
 }
 
-/* Logo vector sizing inside modal header */
 .modal-logo-img {
     width: 100%;
     height: 100%;
@@ -791,7 +762,6 @@ body {
     color: #0c232c;
 }
 
-/* Walk-in registration form structure and scrollable body */
 #dashboard-walkin-form {
     display: flex;
     flex-direction: column;
@@ -826,7 +796,6 @@ body {
     padding-bottom: 6px;
 }
 
-/* Multi-column form layout grids and responsive breakpoint */
 .form-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -845,7 +814,6 @@ body {
     }
 }
 
-/* Form inputs, labels, and focus states */
 .modal-input-group {
     margin-bottom: 16px;
 }
@@ -881,7 +849,6 @@ body {
     box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.15);
 }
 
-/* Fixed bottom action toolbar for walk-in modal */
 .modal-footer-bar {
     padding: 16px 32px 24px 32px;
     border-top: 1px solid #edf2f7;
@@ -934,7 +901,6 @@ body {
 /* ==========================================================================
    9. ONLINE BOOKING OVERLAY MODAL
    ========================================================================== */
-/* Blurred backdrop overlay for online booking requests modal */
 .booking-modal-overlay {
     position: fixed;
     top: 0;
@@ -959,7 +925,6 @@ body {
     visibility: visible;
 }
 
-/* Floating modal dialog card for online bookings */
 .booking-modal-card {
     background-color: var(--white);
     color: var(--primary-dark);
@@ -979,7 +944,6 @@ body {
     transform: translateY(0) scale(1);
 }
 
-/* Modal header layout, title box, logo badge, and close button */
 .modal-header {
     padding: 28px 32px 20px 32px;
     display: flex;
@@ -1057,7 +1021,6 @@ body {
     color: #0f172a;
 }
 
-/* Modal body scrollable layout containing reservation items */
 .modal-body {
     padding: 24px 32px;
     overflow-y: auto;
@@ -1066,7 +1029,6 @@ body {
     gap: 20px;
 }
 
-/* Reservation request card structure and status indicators */
 .reservation-card {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -1125,7 +1087,6 @@ body {
     margin-bottom: 16px;
 }
 
-/* Details grid layout detailing reservation specs */
 .details-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1167,7 +1128,6 @@ body {
     font-weight: 700;
 }
 
-/* Action row controls: room assignment dropdown and confirmation buttons */
 .action-row {
     display: flex;
     justify-content: space-between;
@@ -1243,7 +1203,6 @@ body {
     background: #0f766e;
 }
 
-/* Modal footer control bar and workstation close button */
 .modal-footer {
     padding: 16px 32px 24px 32px;
     border-top: 1px solid #edf2f7;

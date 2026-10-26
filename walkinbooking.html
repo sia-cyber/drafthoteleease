@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotelEase - Walk-In Express Check-In</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="walkinbooking.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo-container">
+                <svg viewBox="0 0 500 500" class="he-logo" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="235" fill="#0d2b38" stroke="#ffffff" stroke-width="12"/>
+                    <circle cx="250" cy="250" r="210" fill="none" stroke="#ffffff" stroke-width="4"/>
+                    <path d="M180 390 V200 A70 70 0 0 1 320 200 V390" fill="#0b3d4c" stroke="#ffffff" stroke-width="8"/>
+                    <path d="M225 155 A25 25 0 0 1 275 155 Z" fill="#20b2aa"/>
+                    <path d="M195 190 L220 160 M305 190 L280 160 M250 150 V195 M210 172 H290" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                    <g transform="translate(-10, 40)">
+                        <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                        <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                        <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                        <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                    </g>
+                    <g transform="translate(230, 40)">
+                        <path d="M130 190 h25 l-5 35 h-15 z" fill="#0b3d4c" stroke="#ffffff" stroke-width="4"/>
+                        <circle cx="142.5" cy="180" r="6" fill="#ffffff"/>
+                        <path d="M142.5 174 v-8" stroke="#ffffff" stroke-width="4"/>
+                        <rect x="135" y="200" width="15" height="20" fill="#20b2aa" opacity="0.8"/>
+                    </g>
+                    <rect x="150" y="390" width="200" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                    <rect x="165" y="410" width="170" height="15" fill="#144e5c" stroke="#ffffff" stroke-width="4"/>
+                    <rect x="180" y="430" width="140" height="15" fill="#20b2aa" stroke="#ffffff" stroke-width="4"/>
+                    <text x="250" y="315" font-family="'Playfair Display', serif" font-size="95" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">HE</text>
+                </svg>
+            </div>
+            <div class="brand-info">
+                <div class="brand-title-row">
+                    <span class="brand-name">HotelEase</span>
+                    <span class="admin-badge">ADMIN PORTAL</span>
+                </div>
+                <span class="subsystem-subtitle">FRONT DESK MANAGEMENT SUBSYSTEM</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="user-profile">
+                <div class="avatar">SC</div>
+                <div class="user-details">
+                    <span class="user-name">Alex Morgan</span>
+                    <span class="user-role">Duty Manager • Morning Shift</span>
+                </div>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn" title="Menu & Logout">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SIDEBAR NAVIGATION DRAWER -->
+    <aside class="sidebar-drawer" id="sidebarDrawer">
+        <div class="sidebar-header">
+            <h3>Navigation Menu</h3>
+            <button class="close-sidebar" id="closeSidebar">&times;</button>
+        </div>
+        <ul class="sidebar-nav-list">
+            <li><a href="dashboard.html"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Dashboard Overview</a></li>
+            <li><a href="onlinebooking.html"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg> Online Booking</a></li>
+            <li><a href="walkinbooking.html" class="active" style="color: var(--white); border-left-color: var(--accent-teal);"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Walk in Booking</a></li>
+            <li><a href="room-occupancy.html"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Room Occupancy</a></li>
+            <li><a href="#"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Guests Feedback</a></li>
+            <li class="sidebar-divider"></li>
+            <li><a href="#" class="logout-link" id="logoutBtn"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout</a></li>
+        </ul>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN PAGE WORKSPACE -->
+    <main class="dashboard-main">
+        <div class="page-header-container">
+            <div>
+                <h1 class="page-title">Walk-In Express Check-In</h1>
+                <p class="page-subtitle">Register walk-in guests directly into the PMS, collect payment, and allocate room access keys.</p>
+            </div>
+        </div>
+
+        <!-- PROGRESS STEPPER -->
+        <div class="stepper-card">
+            <div class="stepper-track-line" id="stepperTrackProgress"></div>
+            
+            <div class="stepper-step active" id="step-node-1">
+                <div class="step-indicator">
+                    <span class="icon-check">✓</span>
+                    <span class="dot-inner"></span>
+                </div>
+                <div class="step-label">Guest Booking Info</div>
+                <div class="step-desc">Guest & Stay Details</div>
+            </div>
+
+            <div class="stepper-step" id="step-node-2">
+                <div class="step-indicator">
+                    <span class="icon-check">✓</span>
+                    <span class="dot-inner"></span>
+                </div>
+                <div class="step-label">Payment</div>
+                <div class="step-desc">Bill & Payment Method</div>
+            </div>
+
+            <div class="stepper-step" id="step-node-3">
+                <div class="step-indicator">
+                    <span class="icon-check">✓</span>
+                    <span class="dot-inner"></span>
+                </div>
+                <div class="step-label">Confirmation</div>
+                <div class="step-desc">Completed & Key Issued</div>
+            </div>
+        </div>
+
+        <div class="workspace-card">
+            
+            <!-- STEP 1: GUEST BOOKING INFO -->
+            <div class="step-panel active" id="step-panel-1">
+                <div class="workspace-top-bar">
+                    <div class="workspace-title-group">
+                        <h2>Step 1: Guest Booking Info</h2>
+                        <span class="status-badge-gold">Front Desk Station</span>
+                    </div>
+                </div>
+
+                <form id="page-walkin-form">
+                    <div class="form-sections-wrapper">
+                        <!-- Section 1: Guest Information -->
+                        <div class="form-section-card">
+                            <div class="form-section-title">Guest Information</div>
+                            <div class="modal-input-group">
+                                <label for="walkin-name">Full Name</label>
+                                <input type="text" id="walkin-name" placeholder="e.g. John Doe" required>
+                            </div>
+                            <div class="form-row-2">
+                                <div class="modal-input-group">
+                                    <label for="walkin-contact">Contact Number</label>
+                                    <input type="tel" id="walkin-contact" placeholder="e.g. +63 912 345 6789" required>
+                                </div>
+                                <div class="modal-input-group">
+                                    <label for="walkin-email">Email Address</label>
+                                    <input type="email" id="walkin-email" placeholder="e.g. john@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Reservation Details -->
+                        <div class="form-section-card">
+                            <div class="form-section-title">Reservation Details</div>
+                            
+                            <div class="form-row-2">
+                                <div class="modal-input-group">
+                                    <label for="walkin-stay-type">Stay Type</label>
+                                    <select id="walkin-stay-type" required>
+                                        <option value="daily">Daily / Overnight Stay</option>
+                                        <option value="hourly">Hourly Stay</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="modal-input-group" id="hours-group">
+                                    <label for="walkin-hours" id="hours-label">Additional Extension Hours</label>
+                                    <select id="walkin-hours"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="modal-input-group">
+                                    <label for="walkin-checkin">Check-in Date</label>
+                                    <input type="date" id="walkin-checkin" required>
+                                </div>
+                                <div class="modal-input-group" id="checkout-group">
+                                    <label for="walkin-checkout">Check-out Date</label>
+                                    <input type="date" id="walkin-checkout" required>
+                                </div>
+                            </div>
+
+                            <div class="modal-input-group">
+                                <label for="walkin-room">Preferred Room Type</label>
+                                <select id="walkin-room" required>
+                                    <option value="Economy Room">Economy Room (₱1,500/night)</option>
+                                    <option value="Standard Room">Standard Room (₱2,200/night)</option>
+                                    <option value="Superior Room">Superior Room (₱2,800/night)</option>
+                                    <option value="Twin Room">Twin Room (₱3,000/night)</option>
+                                    <option value="Family Room">Family Room (₱3,500/night)</option>
+                                    <option value="Junior Suite">Junior Suite (₱3,800/night)</option>
+                                    <option value="Deluxe Room">Deluxe Room (₱4,200/night)</option>
+                                    <option value="Executive Room">Executive Room (₱5,800/night)</option>
+                                    <option value="Honeymoon Suite">Honeymoon Suite (₱7,000/night)</option>
+                                    <option value="Presidential Suite">Presidential Suite (₱9,500/night)</option>
+                                    <option value="Penthouse Suite">Penthouse Suite (₱12,000/night)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="modal-input-group">
+                                    <label for="walkin-guests">Guests <span id="capacity-hint" style="color: #0f766e; font-weight: normal; font-size: 11px;">(Max: 2 guests/room)</span></label>
+                                    <input type="text" id="walkin-guests" value="1" placeholder="e.g. 1" required>
+                                </div>
+                                <div class="modal-input-group">
+                                    <label for="walkin-rooms">Rooms <span style="color: #0f766e; font-weight: normal; font-size: 11px;">(Max: 5 rooms/transaction)</span></label>
+                                    <input type="text" id="walkin-rooms" value="1" placeholder="e.g. 1" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-footer-bar">
+                        <button type="button" class="btn-secondary-custom" id="clearFormBtn">Clear Form</button>
+                        <button type="submit" class="btn-primary-teal">Proceed to Payment &rarr;</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- STEP 2: PAYMENT -->
+            <div class="step-panel" id="step-panel-2">
+                <div class="workspace-top-bar">
+                    <div class="workspace-title-group">
+                        <h2>Step 2: Collect Payment</h2>
+                        <span class="status-badge-gold">Cashier Station</span>
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <div class="form-section-title">Bill Breakdown</div>
+                    <div class="summary-row"><span>Guest Name:</span><strong id="pay-summary-name">-</strong></div>
+                    <div class="summary-row"><span>Room Selection:</span><strong id="pay-summary-room">-</strong></div>
+                    <div class="summary-row"><span>Duration:</span><strong id="pay-summary-duration">-</strong></div>
+                    <div class="summary-row total"><span>Total Calculated Bill:</span><strong id="pay-summary-total">₱0.00</strong></div>
+                </div>
+
+                <div class="form-section-card" style="margin-bottom: 24px;">
+                    <div class="form-section-title">Payment Method</div>
+                    <div class="modal-input-group">
+                        <select id="payment-method">
+                            <option value="Cash">Cash Payment</option>
+                            <option value="Credit/Debit Card">Credit / Debit Card Terminal</option>
+                            <option value="Maya">Maya E-Wallet</option>
+                            <option value="GCash">GCash E-Wallet</option>
+                            <option value="MariBank">MariBank</option>
+                            <option value="GoTyme">GoTyme Bank</option>
+                            <option value="CIMB">CIMB Bank</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-footer-bar">
+                    <button type="button" class="btn-secondary-custom" id="backToStep1Btn">&larr; Back to Details</button>
+                    <button type="button" class="btn-primary-teal" id="confirmPaymentBtn">Confirm & Process Payment</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: CONFIRMATION -->
+            <div class="step-panel" id="step-panel-3">
+                <div style="text-align: center; padding: 20px 0;">
+                    <div style="width: 56px; height: 56px; background: #dcfce7; color: #16a34a; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">✓</div>
+                    <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 8px;">Booking & Payment Completed!</h2>
+                    <p style="color: #64748b; font-size: 14px;">The transaction was processed successfully. Room access keycard is ready for allocation.</p>
+
+                    <div class="summary-box" style="max-width: 460px; margin: 24px auto; text-align: left;">
+                        <div class="summary-row"><span>Transaction REQ ID:</span><strong id="conf-req-id">REQ-99482</strong></div>
+                        <div class="summary-row"><span>Guest Name:</span><strong id="conf-guest-name">-</strong></div>
+                        <div class="summary-row"><span>Stay Detail:</span><strong id="conf-stay-detail">-</strong></div>
+                        <div class="summary-row"><span>Payment Status:</span><strong style="color: #16a34a;">PAID (Verified)</strong></div>
+                    </div>
+
+                    <button type="button" class="btn-primary-teal" id="newBookingBtn">Start New Walk-In Check-In</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+    <script src="walkinbooking.js"></script>
+</body>
+</html>
