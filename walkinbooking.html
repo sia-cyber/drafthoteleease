@@ -87,11 +87,11 @@
         <div class="page-header-container">
             <div>
                 <h1 class="page-title">Walk-In Express Check-In</h1>
-                <p class="page-subtitle">Register walk-in guests directly into the PMS, collect payment, and allocate room access keys.</p>
+                <p class="page-subtitle">Register walk-in guests directly into the PMS, assign multi-category rooms with itemized billing breakdowns, collect payment, and issue access keys.</p>
             </div>
         </div>
 
-        <!-- PROGRESS STEPPER -->
+        <!-- PROGRESS STEPPER (4 STEPS) -->
         <div class="stepper-card">
             <div class="stepper-track-line" id="stepperTrackProgress"></div>
             
@@ -109,11 +109,20 @@
                     <span class="icon-check">✓</span>
                     <span class="dot-inner"></span>
                 </div>
+                <div class="step-label">Room Selection</div>
+                <div class="step-desc">Pick Floor & Rooms</div>
+            </div>
+
+            <div class="stepper-step" id="step-node-3">
+                <div class="step-indicator">
+                    <span class="icon-check">✓</span>
+                    <span class="dot-inner"></span>
+                </div>
                 <div class="step-label">Payment</div>
                 <div class="step-desc">Bill & Payment Method</div>
             </div>
 
-            <div class="stepper-step" id="step-node-3">
+            <div class="stepper-step" id="step-node-4">
                 <div class="step-indicator">
                     <span class="icon-check">✓</span>
                     <span class="dot-inner"></span>
@@ -155,78 +164,107 @@
                             </div>
                         </div>
 
-                        <!-- Section 2: Reservation Details -->
+                        <!-- Section 2: Room Selection & Schedules -->
                         <div class="form-section-card">
-                            <div class="form-section-title">Reservation Details</div>
+                            <div class="form-section-title">Room Selection & Independent Schedules</div>
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 16px;">Set custom check-in dates, check-out dates, extension hours, or stay durations per room type (Max 5 rooms total).</p>
                             
-                            <div class="form-row-2">
-                                <div class="modal-input-group">
-                                    <label for="walkin-stay-type">Stay Type</label>
-                                    <select id="walkin-stay-type" required>
-                                        <option value="daily">Daily / Overnight Stay</option>
-                                        <option value="hourly">Hourly Stay</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="modal-input-group" id="hours-group">
-                                    <label for="walkin-hours" id="hours-label">Additional Extension Hours</label>
-                                    <select id="walkin-hours"></select>
+                            <div id="room-selection-rows-container">
+                                <!-- Dynamic Room Type Cards Injected Here -->
+                            </div>
+
+                            <div class="room-builder-footer">
+                                <button type="button" class="btn-secondary-custom" id="add-room-row-btn" style="padding: 8px 16px; font-size: 13px;">+ Add Another Room Type</button>
+                                <div style="font-size: 13px; font-weight: 600; color: #0d2b38;">
+                                    Total Rooms: <span id="total-rooms-badge" style="color: #0f766e; font-size: 16px; font-weight: 700;">1</span> / 5 max
                                 </div>
                             </div>
 
-                            <div class="form-row-2">
-                                <div class="modal-input-group">
-                                    <label for="walkin-checkin">Check-in Date</label>
-                                    <input type="date" id="walkin-checkin" required>
-                                </div>
-                                <div class="modal-input-group" id="checkout-group">
-                                    <label for="walkin-checkout">Check-out Date</label>
-                                    <input type="date" id="walkin-checkout" required>
+                            <!-- ITEMIZED RECEIPT SUMMARY TABLE IN STEP 1 -->
+                            <div class="receipt-summary-container">
+                                <div class="receipt-table-title">Live Itemized Bill Summary</div>
+                                <table class="receipt-table">
+                                    <thead>
+                                        <tr>
+                                            <th>QTY</th>
+                                            <th>Description</th>
+                                            <th>Unit Price</th>
+                                            <th style="text-align: right;">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="receipt-table-body">
+                                        <!-- Dynamic Itemized Rows Injected Here -->
+                                    </tbody>
+                                </table>
+                                <div class="receipt-totals-box">
+                                    <div class="receipt-sub-row">
+                                        <span>Subtotal</span>
+                                        <strong id="receipt-subtotal">₱0.00</strong>
+                                    </div>
+                                    <div class="receipt-sub-row">
+                                        <span>Sales Tax (12% VAT)</span>
+                                        <strong id="receipt-tax">₱0.00</strong>
+                                    </div>
+                                    <div class="receipt-sub-row total">
+                                        <span>Total (PHP)</span>
+                                        <strong id="receipt-grand-total">₱0.00</strong>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="modal-input-group">
-                                <label for="walkin-room">Preferred Room Type</label>
-                                <select id="walkin-room" required>
-                                    <option value="Economy Room">Economy Room (₱1,500/night)</option>
-                                    <option value="Standard Room">Standard Room (₱2,200/night)</option>
-                                    <option value="Superior Room">Superior Room (₱2,800/night)</option>
-                                    <option value="Twin Room">Twin Room (₱3,000/night)</option>
-                                    <option value="Family Room">Family Room (₱3,500/night)</option>
-                                    <option value="Junior Suite">Junior Suite (₱3,800/night)</option>
-                                    <option value="Deluxe Room">Deluxe Room (₱4,200/night)</option>
-                                    <option value="Executive Room">Executive Room (₱5,800/night)</option>
-                                    <option value="Honeymoon Suite">Honeymoon Suite (₱7,000/night)</option>
-                                    <option value="Presidential Suite">Presidential Suite (₱9,500/night)</option>
-                                    <option value="Penthouse Suite">Penthouse Suite (₱12,000/night)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-row-2">
-                                <div class="modal-input-group">
-                                    <label for="walkin-guests">Guests <span id="capacity-hint" style="color: #0f766e; font-weight: normal; font-size: 11px;">(Max: 2 guests/room)</span></label>
-                                    <input type="text" id="walkin-guests" value="1" placeholder="e.g. 1" required>
-                                </div>
-                                <div class="modal-input-group">
-                                    <label for="walkin-rooms">Rooms <span style="color: #0f766e; font-weight: normal; font-size: 11px;">(Max: 5 rooms/transaction)</span></label>
-                                    <input type="text" id="walkin-rooms" value="1" placeholder="e.g. 1" required>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <div class="form-footer-bar">
                         <button type="button" class="btn-secondary-custom" id="clearFormBtn">Clear Form</button>
-                        <button type="submit" class="btn-primary-teal">Proceed to Payment &rarr;</button>
+                        <button type="submit" class="btn-primary-teal">Select Rooms on Floor Map &rarr;</button>
                     </div>
                 </form>
             </div>
 
-            <!-- STEP 2: PAYMENT -->
+            <!-- STEP 2: ROOM SELECTION (PICK ROOMS) -->
             <div class="step-panel" id="step-panel-2">
                 <div class="workspace-top-bar">
                     <div class="workspace-title-group">
-                        <h2>Step 2: Collect Payment</h2>
+                        <h2>Step 2: Room Allocation & Floor Layout</h2>
+                        <span class="status-badge-gold">Interactive Building Map</span>
+                    </div>
+                </div>
+
+                <div class="room-picker-controls-card">
+                    <div class="picker-control-group">
+                        <div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Requested Room Types Progress:</div>
+                        <div id="picker-requested-breakdown" class="requested-types-flex-container">
+                            <!-- Category progress badges injected dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="picker-selection-status">
+                        <span>Total Selected: <strong id="selected-rooms-count">0</strong> / <strong id="target-rooms-count">1</strong> Rooms</span>
+                    </div>
+
+                    <div class="room-status-legend">
+                        <span class="legend-item legend-available"><span class="legend-dot"></span> Available</span>
+                        <span class="legend-item legend-selected"><span class="legend-dot"></span> Selected</span>
+                        <span class="legend-item legend-occupied"><span class="legend-dot"></span> Occupied</span>
+                    </div>
+                </div>
+
+                <div class="building-floors-wrapper" id="buildingFloorsContainer">
+                    <!-- Dynamic Floor Cards Injected via JS -->
+                </div>
+
+                <div class="form-footer-bar">
+                    <button type="button" class="btn-secondary-custom" id="backToStep1Btn">&larr; Back to Guest Details</button>
+                    <button type="button" class="btn-primary-teal" id="proceedToPaymentBtn">Proceed to Payment &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: PAYMENT -->
+            <div class="step-panel" id="step-panel-3">
+                <div class="workspace-top-bar">
+                    <div class="workspace-title-group">
+                        <h2>Step 3: Collect Payment</h2>
                         <span class="status-badge-gold">Cashier Station</span>
                     </div>
                 </div>
@@ -234,8 +272,8 @@
                 <div class="summary-box">
                     <div class="form-section-title">Bill Breakdown</div>
                     <div class="summary-row"><span>Guest Name:</span><strong id="pay-summary-name">-</strong></div>
-                    <div class="summary-row"><span>Room Selection:</span><strong id="pay-summary-room">-</strong></div>
-                    <div class="summary-row"><span>Duration:</span><strong id="pay-summary-duration">-</strong></div>
+                    <div class="summary-row"><span>Reserved Room Types & Schedules:</span><strong id="pay-summary-room-breakdown" style="text-align: right; line-height: 1.5;">-</strong></div>
+                    <div class="summary-row"><span>Allocated Room No(s):</span><strong id="pay-summary-room-numbers" style="color: #0f766e;">-</strong></div>
                     <div class="summary-row total"><span>Total Calculated Bill:</span><strong id="pay-summary-total">₱0.00</strong></div>
                 </div>
 
@@ -255,22 +293,23 @@
                 </div>
 
                 <div class="form-footer-bar">
-                    <button type="button" class="btn-secondary-custom" id="backToStep1Btn">&larr; Back to Details</button>
+                    <button type="button" class="btn-secondary-custom" id="backToStep2Btn">&larr; Back to Room Selection</button>
                     <button type="button" class="btn-primary-teal" id="confirmPaymentBtn">Confirm & Process Payment</button>
                 </div>
             </div>
 
-            <!-- STEP 3: CONFIRMATION -->
-            <div class="step-panel" id="step-panel-3">
+            <!-- STEP 4: CONFIRMATION -->
+            <div class="step-panel" id="step-panel-4">
                 <div style="text-align: center; padding: 20px 0;">
                     <div style="width: 56px; height: 56px; background: #dcfce7; color: #16a34a; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;">✓</div>
                     <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 8px;">Booking & Payment Completed!</h2>
-                    <p style="color: #64748b; font-size: 14px;">The transaction was processed successfully. Room access keycard is ready for allocation.</p>
+                    <p style="color: #64748b; font-size: 14px;">The transaction was processed successfully. Room access keycards are ready for allocation.</p>
 
-                    <div class="summary-box" style="max-width: 460px; margin: 24px auto; text-align: left;">
+                    <div class="summary-box" style="max-width: 520px; margin: 24px auto; text-align: left;">
                         <div class="summary-row"><span>Transaction REQ ID:</span><strong id="conf-req-id">REQ-99482</strong></div>
                         <div class="summary-row"><span>Guest Name:</span><strong id="conf-guest-name">-</strong></div>
-                        <div class="summary-row"><span>Stay Detail:</span><strong id="conf-stay-detail">-</strong></div>
+                        <div class="summary-row"><span>Schedules & Stay Details:</span><strong id="conf-stay-detail" style="text-align: right; line-height: 1.5;">-</strong></div>
+                        <div class="summary-row"><span>Allocated Room(s):</span><strong id="conf-room-numbers" style="color: #0f766e;">-</strong></div>
                         <div class="summary-row"><span>Payment Status:</span><strong style="color: #16a34a;">PAID (Verified)</strong></div>
                     </div>
 

@@ -16,7 +16,7 @@
 }
 
 /* ==========================================================================
-   CENTER-ALIGNED TIMELINE STEPPER
+   CENTER-ALIGNED TIMELINE STEPPER (4 STEPS SUPPORT)
    ========================================================================== */
 
 .stepper-card {
@@ -26,7 +26,7 @@
     align-items: flex-start;
     background: #ffffff;
     border-radius: 20px;
-    padding: 24px 60px 18px 60px;
+    padding: 24px 50px 18px 50px;
     margin-bottom: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
@@ -35,8 +35,8 @@
     content: '';
     position: absolute;
     top: 37px;
-    left: 16.66%;
-    right: 16.66%;
+    left: 12.5%;
+    right: 12.5%;
     height: 3px;
     background: #e2e8f0;
     z-index: 1;
@@ -45,12 +45,12 @@
 .stepper-track-line {
     position: absolute;
     top: 37px;
-    left: 16.66%;
+    left: 12.5%;
     height: 3px;
     background: #0f766e;
     z-index: 2;
     width: 0%;
-    max-width: 66.68%;
+    max-width: 75%;
     transition: width 0.4s ease;
 }
 
@@ -224,6 +224,225 @@
     }
 }
 
+/* ==========================================================================
+   MULTI-ROOM TYPE BUILDER - 6-COLUMN GRID WITH EXTENSION HOURS
+   ========================================================================== */
+
+.room-type-builder-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.room-type-builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.room-row-badge-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f766e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.room-type-builder-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.9fr 1.1fr 1.1fr 1.3fr;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.room-type-builder-grid .modal-input-group {
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-type-builder-grid .modal-input-group label {
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #102a43;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.room-type-builder-grid .modal-input-group input,
+.room-type-builder-grid .modal-input-group select {
+    height: 38px;
+    padding: 0 8px;
+    font-size: 12px;
+    font-family: var(--font-sans);
+    color: #102a43;
+    background: #ffffff;
+    border: 1.5px solid #c9d9e7;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+}
+
+.room-type-builder-grid .modal-input-group input:focus,
+.room-type-builder-grid .modal-input-group select:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.15);
+}
+
+.room-type-builder-grid .modal-input-group select:disabled {
+    background: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
+
+@media (max-width: 1100px) {
+    .room-type-builder-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 650px) {
+    .room-type-builder-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn-remove-room-row {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.btn-remove-room-row:hover {
+    background: #fee2e2;
+}
+
+.room-builder-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed #cbd5e1;
+}
+
+/* ==========================================================================
+   ITEMIZED RECEIPT TABLE STYLES
+   ========================================================================== */
+
+.receipt-summary-container {
+    margin-top: 20px;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.receipt-table-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #0d2b38;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.receipt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.receipt-table th {
+    background: #102a43;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.receipt-table th:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; width: 60px; text-align: center; }
+.receipt-table th:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; text-align: right; }
+
+.receipt-table td {
+    padding: 12px;
+    border-bottom: 1px solid #edf2f7;
+    color: #102a43;
+    vertical-align: top;
+}
+
+.receipt-table td:first-child {
+    text-align: center;
+    font-weight: 700;
+}
+
+.receipt-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.receipt-totals-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    border-top: 2px solid #102a43;
+    padding-top: 12px;
+}
+
+.receipt-sub-row {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    font-size: 13px;
+    color: #4a6572;
+}
+
+.receipt-sub-row strong {
+    color: #102a43;
+}
+
+.receipt-sub-row.total {
+    font-size: 16px;
+    color: #0f766e;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 6px;
+    margin-top: 4px;
+}
+
+.receipt-sub-row.total strong {
+    color: #0f766e;
+}
+
+/* ==========================================================================
+   INPUTS & BUTTONS
+   ========================================================================== */
+
 .modal-input-group {
     margin-bottom: 16px;
 }
@@ -243,8 +462,8 @@
 .modal-input-group input,
 .modal-input-group select {
     width: 100%;
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 10px 10px;
+    font-size: 13px;
     font-family: var(--font-sans);
     color: #102a43;
     background: #ffffff;
@@ -252,12 +471,7 @@
     border-radius: 10px;
     outline: none;
     transition: all 0.2s ease;
-}
-
-.modal-input-group input:focus,
-.modal-input-group select:focus {
-    border-color: var(--accent-teal);
-    box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.15);
+    box-sizing: border-box;
 }
 
 .summary-box {
@@ -326,6 +540,237 @@
 
 .btn-primary-teal:hover {
     background: #0d655e;
+}
+
+/* ==========================================================================
+   STEP 2: ROOM SELECTION & 12-FLOOR LAYOUT STYLES
+   ========================================================================== */
+
+.room-picker-controls-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px 24px;
+    margin-bottom: 24px;
+}
+
+.picker-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.picker-selection-status {
+    font-size: 14px;
+    color: #334155;
+}
+
+.picker-selection-status strong {
+    color: #0f766e;
+    font-size: 16px;
+}
+
+.room-status-legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-available .legend-dot { background: #dcfce7; border: 1.5px solid #16a34a; }
+.legend-selected .legend-dot { background: #0f766e; }
+.legend-occupied .legend-dot { background: #cbd5e1; }
+
+.building-floors-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 24px;
+    scroll-behavior: smooth;
+}
+
+.building-floors-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.building-floors-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+.building-floors-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.floor-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px 20px;
+    transition: all 0.2s ease;
+}
+
+.floor-card.highlighted-floor {
+    border-color: #0f766e;
+    background: #f0fdf4;
+    box-shadow: 0 4px 14px rgba(15, 118, 110, 0.08);
+}
+
+.floor-card.other-floor {
+    opacity: 0.7;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.floor-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floor-badge {
+    background: #0d2b38;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.floor-type-tag {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.floor-card.highlighted-floor .floor-type-tag {
+    color: #0f766e;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .rooms-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 500px) {
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.room-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.room-btn-number {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.room-btn-status {
+    font-size: 10px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.room-btn.available {
+    background: #f0fdf4;
+    border-color: #86efac;
+}
+.room-btn.available .room-btn-status {
+    color: #16a34a;
+}
+.room-btn.available:hover {
+    border-color: #0f766e;
+    background: #e6fffa;
+    transform: translateY(-2px);
+}
+
+.room-btn.selected {
+    background: #0f766e;
+    border-color: #0f766e;
+    box-shadow: 0 4px 10px rgba(15, 118, 110, 0.3);
+}
+.room-btn.selected .room-btn-number,
+.room-btn.selected .room-btn-status {
+    color: #ffffff;
+}
+
+.room-btn.occupied {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.room-btn.occupied .room-btn-number {
+    color: #94a3b8;
+}
+.room-btn.occupied .room-btn-status {
+    color: #ef4444;
+}
+
+/* QUOTA MET / REACHED ROOMS STYLING (TURNS GREY LIKE OCCUPIED) */
+.room-btn.quota-reached {
+    background: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    cursor: not-allowed !important;
+}
+.room-btn.quota-reached .room-btn-number {
+    color: #94a3b8 !important;
+}
+.room-btn.quota-reached .room-btn-status {
+    color: #64748b !important;
+}
+
+.room-btn.type-mismatch {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 /* ==========================================================================
