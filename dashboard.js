@@ -15,6 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeSidebar) closeSidebar.addEventListener('click', toggleSidebar);
     if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
 
+    // --- NOTIFICATION DROPDOWN TOGGLE ---
+    const notificationBtn = document.getElementById('notificationBtn');
+    const notificationDropdown = document.getElementById('notificationDropdown');
+
+    if (notificationBtn && notificationDropdown) {
+        notificationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!notificationBtn.contains(e.target) && !notificationDropdown.contains(e.target)) {
+                notificationDropdown.classList.remove('active');
+            }
+        });
+    }
+
     // --- ONLINE BOOKING NAVIGATION ---
     const openOnlineBookingNav = document.getElementById('openOnlineBookingNav');
     const openOnlineBookingCard = document.getElementById('openOnlineBookingCard');
