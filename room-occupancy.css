@@ -37,6 +37,7 @@ body {
     background: var(--white);
     color: var(--dark-azure-deep);
     padding: 35px 6%;
+    
 }
 
 .gradient-text {
@@ -182,25 +183,31 @@ tbody tr:hover {
     font-weight: 700;
 }
 
-.available {
+
+/* Vacant Ready */
+.vacant-ready {
     background: #E1F3E5;
     color: #287542;
 }
 
+/* Occupied */
 .occupied {
-    background: #FBE3E1;
-    color: #A3322B;
+    background: #E4EBFA;
+    color: #365A9A;
 }
 
-.check-in {
+/* Vacant Dirty */
+.vacant-dirty {
     background: #FFF0CE;
     color: #8B6116;
 }
 
-.reserved {
-    background: #E4EBFA;
-    color: #365A9A;
+/* Out of Order */
+.out-of-order {
+    background: #FBE3E1;
+    color: #A3322B;
 }
+
 
 .details-btn {
     background: transparent;
@@ -219,6 +226,29 @@ tbody tr:hover {
     background: var(--dark-azure-deep);
     color: #FFFFFF;
 }
+
+
+
+.status-select {
+    width: 100%;
+    max-width: 220px;
+    padding: 9px 10px;
+    border: 1px solid #b6c9d8;
+    border-radius: 7px;
+    background-color: #ffffff;
+    color: #183b56;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.status-select:focus {
+    outline: 2px solid #368981;
+    outline-offset: 2px;
+}
+
+
 
 @media (max-width: 600px) {
     .page-header {
@@ -779,4 +809,65 @@ body.sidebar-open {
     position: relative;
     z-index: 2001;
     cursor: pointer;
+}
+
+
+
+/* Search Bar */
+.search-section {
+    margin-bottom: 24px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid #b6c9d8;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
+.search-icon {
+    color: #627d98;
+    font-size: 24px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #183b56;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search-box input::placeholder {
+    color: #8ca3af;
+}
+
+#clearSearch {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #e8f0f5;
+    color: #183b56;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#clearSearch:hover {
+    background: #c9d9e7;
 }

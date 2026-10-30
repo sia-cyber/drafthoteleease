@@ -53,6 +53,19 @@
     </header>
 
     <main class="container">
+        <!-- Search Bar -->
+        <section class="search-section">
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="text"
+                    id="roomSearch"
+                    placeholder="Search room number or guest name..."
+                    aria-label="Search rooms by room number or guest name"
+                >
+                <button type="button" id="clearSearch">Clear</button>
+            </div>
+        </section>
 
         <section class="summary">
             <div class="summary-card">
@@ -83,6 +96,7 @@
                             <th>Guest Name</th>
                             <th>Details</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -95,7 +109,19 @@
                                 <button class="details-btn"
                                     data-room="101">View Details</button>
                             </td>
-                            <td><span class="status available">Available</span></td>
+                            <td>
+                                <span class="status vacant-ready">VR - Vacant Ready</span>
+                            </td>
+                            
+                            <td>
+                                <select class="status-select" data-room="101">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
+
                         </tr>
 
                         <tr>
@@ -106,7 +132,17 @@
                                 <button class="details-btn"
                                     data-room="102">View Details</button>
                             </td>
-                            <td><span class="status occupied">Occupied</span></td>
+                            <td>
+                                <span class="status occupied">OCC - Occupied</span>
+                            </td>
+                            <td>
+                                <select class="status-select" data-room="102">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
@@ -117,7 +153,17 @@
                                 <button class="details-btn"
                                     data-room="103">View Details</button>
                             </td>
-                            <td><span class="status check-in">Check-in</span></td>
+                            <td>
+                                <span class="status occupied">OCC - Occupied</span>
+                            </td>
+                           <td>
+                                <select class="status-select" data-room="103">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
@@ -128,7 +174,15 @@
                                 <button class="details-btn"
                                     data-room="104">View Details</button>
                             </td>
-                            <td><span class="status reserved">Reserved</span></td>
+                            <td><span class="status vacant-ready">VR - Vacant Ready</span></td>
+                            <td>
+                                <select class="status-select" data-room="104">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
@@ -139,7 +193,15 @@
                                 <button class="details-btn"
                                     data-room="105">View Details</button>
                             </td>
-                            <td><span class="status available">Available</span></td>
+                            <td><span class="status vacant-ready">VR - Vacant Ready</span></td>
+                           <td>
+                                <select class="status-select" data-room="105">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
@@ -150,7 +212,15 @@
                                 <button class="details-btn"
                                     data-room="106">View Details</button>
                             </td>
-                            <td><span class="status available">Available</span></td>
+                            <td><span class="status vacant-ready">VR - Vacant Ready</span></td>
+                            <td>
+                                <select class="status-select" data-room="106">
+                                    <option value="VR">VR — Vacant Ready</option>
+                                    <option value="OCC">OCC — Occupied</option>
+                                    <option value="VD">VD — Vacant Dirty</option>
+                                    <option value="OOO">OOO — Out of Order</option>
+                                </select>
+                            </td>
                         </tr>
                         
                         
